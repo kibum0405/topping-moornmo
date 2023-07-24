@@ -81,6 +81,7 @@ path: frontend-wijmo/src/components/listers
         async created() {
             if (!this.value) {
                 this.value = [];
+                this.$emit('input', this.value);
             }
         },
         methods: {

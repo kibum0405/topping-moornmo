@@ -225,7 +225,9 @@ export default {
                 this.selectedGrid = [];
             }
             this.$nextTick(() => {
-                this.$refs.flexGridDetails.refresh();
+                if (this.$refs.flexGridDetails) {
+                    this.$refs.flexGridDetails.refresh();
+                }
             });
         },
         addNewRow() {
