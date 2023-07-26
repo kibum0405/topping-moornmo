@@ -38,12 +38,12 @@ path: frontend-wijmo/src/grid
             class="wj-felx-grid"
         >
             <wj-flex-grid-filter :filterColumns="[{{#aggregateRoot.fieldDescriptors}}{{#if (isNotId nameCamelCase)}}'{{nameCamelCase}}',{{/if}}{{/aggregateRoot.fieldDescriptors}}]" />
-            <wj-flex-grid-column binding="index" header="Number" width="2*" :isReadOnly="true" align="center" />
+            <wj-flex-grid-column binding="index" header="번호" width="2*" :isReadOnly="true" align="center" />
             {{#aggregateRoot.fieldDescriptors}}
             {{#if (isNotId nameCamelCase)}}
             {{#if isVO}}
             {{else}}
-            <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{nameCamelCase}}" width="2*" :isReadOnly="true" align="center" />
+            <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{displayName}}" width="2*" :isReadOnly="true" align="center" />
             {{/if}}
             {{/if}}
             {{/aggregateRoot.fieldDescriptors}}
