@@ -7,7 +7,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
 <template>
     <v-card outlined style="border-radius: 0; max-height:15vh; margin-top:-10px; padding-bottom:10px;">
         <v-card-title>
-            {{namePascalCase}}
+            {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
         </v-card-title>
     
         <v-card-text>
@@ -98,6 +98,13 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
 
 <function>
 //if(this.queryParameters!=null) alert(this.queryParameters)
+    window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
+        if(displayName){
+            return displayName;
+        }else{
+            return name;
+        }
+    })
 
     window.$HandleBars.registerHelper('searchId', function (className, nameCamelCase, index) {
         if(className.endsWith("String") || className.endsWith("Integer") || className.endsWith("Long") || className.endsWith("Double") || className.endsWith("Float") || className.endsWith("Boolean") || className.endsWith("Date") || className.includes("List")) {
