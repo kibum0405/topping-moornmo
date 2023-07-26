@@ -50,6 +50,13 @@ export default {
 
 
 <function>
+    window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
+        if(displayName){
+	        return displayName;
+        }else{
+	        return name;
+        }
+    })
     window.$HandleBars.registerHelper('isNotName', function (className) {
         return (className != 'name')
     })

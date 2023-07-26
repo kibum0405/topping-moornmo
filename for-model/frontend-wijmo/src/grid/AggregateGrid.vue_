@@ -398,6 +398,14 @@ this.boundedContext.readModels.forEach(view=>{
     }
 })
 
+window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
+    if(displayName){
+        return displayName;
+    }else{
+        return name;
+    }
+})
+
 window.$HandleBars.registerHelper('isNotId', function (className) {
     return (className != 'id')
 })
