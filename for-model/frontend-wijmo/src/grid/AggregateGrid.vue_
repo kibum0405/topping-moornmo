@@ -43,7 +43,7 @@ path: frontend-wijmo/src/grid
             {{#if (isNotId nameCamelCase)}}
             {{#if isVO}}
             {{else}}
-            <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{displayName}}" width="2*" :isReadOnly="true" align="center" />
+            <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center" />
             {{/if}}
             {{/if}}
             {{/aggregateRoot.fieldDescriptors}}
