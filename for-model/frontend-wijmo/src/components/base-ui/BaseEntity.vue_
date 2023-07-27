@@ -1,4 +1,4 @@
-fileName: {{namePascalCase}}Base.vue
+fileName: BaseEntity.vue
 path: frontend-wijmo/src/components/base-ui
 ---
 <template>
