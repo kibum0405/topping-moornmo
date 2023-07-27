@@ -8,7 +8,7 @@ path: frontend-wijmo/src/components/listers
             :items="list"
             item-text="name"
             item-value="name"
-            :label="label"
+            label="{{namePascalCase}}"
             return-object
             v-model="selected"
             @change="select"
@@ -23,29 +23,17 @@ path: frontend-wijmo/src/components/listers
     export default {
         name: '{{namePascalCase}}Picker',
         props: {
-            value: [
-                String,
-                Object,
-                Array,
-                Number,
-                Boolean
-            ],
+            value: [String, Object, Array, Number, Boolean],
             editMode: Boolean,
-            label: String,
         },
         data: () => ({
             list: [],
             selected: null,
             referenceValue: null,
-            repository: null,
-            path: {{namePlural}},
         }),
         async created() {
             var me = this;
-
-            this.repository = new BaseRepository(axios, this.path)
-
-            var temp = await this.repository.find()
+            var temp = await axios.get(axios.fixUrl('/{{namePlural}}'))
             if(temp.data) {
                 {{#if (checkGeneralization aggregateRoot.entities.relations nameCamelCase)}}
                 if(temp.data._embedded) {

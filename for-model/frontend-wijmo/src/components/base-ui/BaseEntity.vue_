@@ -8,7 +8,7 @@ path: frontend-wijmo/src/components/base-ui
 <script>
     const axios = require('axios').default;
 
-    const BaseRepository = require('../../repository/BaseRepository')
+    const BaseRepository = require('../repository/BaseRepository')
 
     export default {
         name: 'base-entity-ui',
