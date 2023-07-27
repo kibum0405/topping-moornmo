@@ -38,10 +38,14 @@ path: frontend-wijmo/src/components/listers
             selected: null,
             referenceValue: null,
             repository: null,
+            path: {{namePlural}},
         }),
         async created() {
             var me = this;
-            var temp = await axios.get(axios.fixUrl('/{{namePlural}}'))
+
+            this.repository = new BaseRepository(axios, this.path)
+
+            var temp = await this.repository.find()
             if(temp.data) {
                 {{#if (checkGeneralization aggregateRoot.entities.relations nameCamelCase)}}
                 if(temp.data._embedded) {
