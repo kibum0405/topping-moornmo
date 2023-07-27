@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <{{../referenceClass}}Picker v-model="value" @selected="pick" :editMode="editMode" />
+        <{{../referenceClass}}Picker :label="label" v-model="value" @selected="pick" :editMode="editMode" />
     </div>
     {{/referenceClass}}
 
