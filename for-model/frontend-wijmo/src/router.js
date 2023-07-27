@@ -15,7 +15,7 @@ Vue.use(Router);
 {{#boundedContexts}}
     {{#aggregates}}
 import {{namePascalCase}}Manager from "./grid/{{namePascalCase}}Grid"
-import {{namePascalCase}}Detail from "./components/listers/{{namePascalCase}}Detail"
+import {{namePascalCase}}Detail from "./components/ui/{{namePascalCase}}Detail"
     {{/aggregates}}
 
     {{#viewes}}

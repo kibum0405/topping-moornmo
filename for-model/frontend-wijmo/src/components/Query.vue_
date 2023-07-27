@@ -7,7 +7,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
 <template>
     <v-card outlined style="border-radius: 0; max-height:15vh; margin-top:-10px; padding-bottom:10px;">
         <v-card-title>
-            {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}} 검색
+            {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
         </v-card-title>
     
         <v-card-text>
