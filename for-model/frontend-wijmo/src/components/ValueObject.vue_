@@ -51,89 +51,24 @@ path: frontend-wijmo/src/components
 
 <script>
     export default {
-        name: '{{namePascalCase}}',
-        components:{},
-        props: {
-            value: [Object, String, Number, Boolean, Array],
-            editMode: Boolean,
-            isNew: Boolean,
-            offline: Boolean,
-            inList: Boolean,
-            label: String,
+        name: 'SalesItem',
+        mixins:[BaseEntity],
+        components:{
         },
         data: () => ({
-            {{#referenceClass}}
-            newValue: {},
-            pickerDialog: false,
-            {{/referenceClass}}
-        }),
-        async created() {
-            if(!Object.values(this.value)[0]) {
-                this.$emit('input', {});
-                this.newValue = {
+            path: "salesOrders/salesItems",
+            itemToEdit: {
                 {{#fieldDescriptors}}
-                    '{{nameCamelCase}}': '',
+                    {{nameCamelCase}}: null,
                 {{/fieldDescriptors}}
-                }
-            }
-            {{#referenceClass}}
-            else {
-                this.newValue = this.value;
-            }
-            {{/referenceClass}}
-            {{^referenceClass}}
-            if(typeof this.value === 'object') {
-            {{#fieldDescriptors}}
-            {{#if (isNotId nameCamelCase)}}
-            {{#if (isPrimitive className)}}
-                if(!('{{nameCamelCase}}' in this.value)) {
-                    this.value.{{nameCamelCase}} = {{#setDefaultValue className}}{{/setDefaultValue}};
-                }
-            {{/if}}
-            {{/if}}
-            {{/fieldDescriptors}}
-            }
-            {{/referenceClass}}
-        },
-        watch: {
-            value(val) {
-                this.$emit('input', val);
             },
-            newValue(val) {
-                this.$emit('input', val);
-            },
+        }),
+        created(){
         },
-
+        computed:{
+        },
         methods: {
-            edit() {
-                this.editMode = true;
-            },
-            async add() {
-                this.editMode = false;
-                this.$emit('input', this.value);
-
-                if(this.isNew){
-                    this.$emit('add', this.value);
-                } else {
-                    this.$emit('edit', this.value);
-                }
-            },
-            async remove(){
-                this.editMode = false;
-                this.isDeleted = true;
-
-                this.$emit('input', this.value);
-                this.$emit('delete', this.value);
-            },
-            change(){
-                this.$emit('change', this.value);
-            },
-            {{#referenceClass}}
-            async pick(val){
-                this.newValue = val;
-            },
-            {{/referenceClass}}
-        }
+        },
     }
 </script>
 
