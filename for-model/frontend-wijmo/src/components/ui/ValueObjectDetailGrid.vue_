@@ -1,6 +1,6 @@
 forEach: ValueObject
 fileName: {{namePlural}}DetailGrid.vue
-path: frontend-wijmo/src/grid
+path: frontend-wijmo/src/components/ui
 ---
 <template>
     <wj-flex-grid
