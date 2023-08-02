@@ -1,3 +1,6 @@
+fileName: BasePicker.vue
+path: frontend-wijmo/src/components/base-ui
+---
 <template>
     <div>
         <v-text-field label="입력하세요" v-model="searchKeyword"></v-text-field>
@@ -21,7 +24,8 @@ import BaseRepository from '../../repository/BaseRepository';
     var _ = require('lodash');
 
     export default {
-        name: 'BasePicker',
+        name: 'base-picker',
+        components:{},
         props: {
             value: [String, Object, Array, Number, Boolean],
             editMode: Boolean,
