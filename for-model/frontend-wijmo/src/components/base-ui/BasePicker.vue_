@@ -1,3 +1,6 @@
+fileName: BasePicker.vue
+path: frontend-wijmo/src/components/base-ui
+---
 <template>
     <div>
         <v-text-field label="입력하세요" v-model="searchKeyword"></v-text-field>
