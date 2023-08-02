@@ -17,30 +17,23 @@ path: frontend-wijmo/src/components
         <div class="detail-title">
         {{namePascalCase}}
         </div>
-
-        <v-row style="padding-right:15px;">
-            {{#fieldDescriptors}}
-            {{#if (isNotId nameCamelCase)}}
-            {{#if (isPrimitive className)}}
-            <v-col cols="6">
-                <div style="display:flex;">
-                    <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
-                    <{{getPrimitiveType className}} label="입력하세요." v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
-                </div>
-            </v-col>
-            {{else}}
-            {{#checkEntityMember className}}
-            <v-col class="detail-picker" cols="6">
-                <{{className}} offline label="{{namePascalCase}}" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
-            </v-col>
-            {{/checkEntityMember}}
-            {{#checkListOfEntityMember className}}
-                <{{getEntityClassNameOfList className}}List offline label="{{namePascalCase}}" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
-            {{/checkListOfEntityMember}}
-            {{/if}}
-            {{/if}}
-            {{/fieldDescriptors}}
-        </v-row>
+        <v-col>
+        {{#fieldDescriptors}}
+        {{#if (isNotId nameCamelCase)}}
+        {{#if (isPrimitive className)}}
+            <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
+            <{{getPrimitiveType className}} label="입력하세요." v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
+        {{else}}
+        {{#checkEntityMember className}}
+            <{{className}} offline label="{{namePascalCase}}" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
+        {{/checkEntityMember}}
+        {{#checkListOfEntityMember className}}
+            <{{getEntityClassNameOfList className}}List offline label="{{namePascalCase}}" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
+        {{/checkListOfEntityMember}}
+        {{/if}}
+        {{/if}}
+        {{/fieldDescriptors}}
+        </v-col>
 
         <v-card-actions v-if="inList">
             <slot name="actions"></slot>
@@ -59,7 +52,7 @@ path: frontend-wijmo/src/components
             path: "salesOrders/salesItems",
             itemToEdit: {
                 {{#fieldDescriptors}}
-                    {{nameCamelCase}}: null,
+                {{nameCamelCase}}: null,
                 {{/fieldDescriptors}}
             },
         }),
