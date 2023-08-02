@@ -17,7 +17,8 @@ import { ExportService } from "./export";
 import * as wjcCore from "@grapecity/wijmo";
 
 export default {
-    name : 'base-grid',
+    name: 'base-grid',
+    components:{},
     data: () => ({
         newValue: {},
         flex: null,

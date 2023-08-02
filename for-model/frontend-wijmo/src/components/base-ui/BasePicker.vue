@@ -22,6 +22,7 @@ import BaseRepository from '../../repository/BaseRepository';
 
     export default {
         name: 'base-picker',
+        components:{},
         props: {
             value: [String, Object, Array, Number, Boolean],
             editMode: Boolean,
