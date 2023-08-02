@@ -58,25 +58,18 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
         data: () => ({
             editMode: true,
             value: {
-                apiPath: '{{#queryOption}}{{apiPath}}{{/queryOption}}',
+                apiPath: '{{namePlural}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}/Query',
                 parameters: {}
             },
         }),
         created() {
-        {{#queryParameters}}
-            this.value.parameters.{{nameCamelCase}} = {{#setDefaultValue className}}{{/setDefaultValue}};
-        {{/queryParameters}}
         },
         watch: {
         },
         methods: {
             search() {
                 let search = null;
-                if({{#queryParameters}}{{#searchId className nameCamelCase @index}}{{/searchId}}{{/queryParameters}}) {
-                    search = null;
-                }else{
-                    search = this.value;
-                }
+                search = this.value;
                 this.$emit('search', search);
             },
             close() {
@@ -104,23 +97,6 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
             return name;
         }
     })
-
-    window.$HandleBars.registerHelper('searchId', function (className, nameCamelCase, index) {
-        if(className.endsWith("String") || className.endsWith("Integer") || className.endsWith("Long") || className.endsWith("Double") || className.endsWith("Float") || className.endsWith("Boolean") || className.endsWith("Date") || className.includes("List")) {
-            if(index != 0){
-                return " && this.value.parameters." + nameCamelCase + " == '' "
-            }else{
-                return "this.value.parameters." + nameCamelCase + " == '' "
-            }
-        } else {
-            if(index != 0){
-                return " && (this.value.parameters." + nameCamelCase + ".id == '' || typeof(this.value.parameters." + nameCamelCase + ") == 'object')"
-            }else{
-                return "(this.value.parameters." + nameCamelCase + ".id == '' || typeof(this.value.parameters." + nameCamelCase + ") == 'object')"
-            }
-        }
-    });
-
     window.$HandleBars.registerHelper('print', function (value) {
         console.log(value)
     });
