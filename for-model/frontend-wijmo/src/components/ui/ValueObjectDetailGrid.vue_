@@ -17,7 +17,7 @@ path: frontend-wijmo/src/components/ui
         :initialized="flexDetailsInitialized"
         style="margin-top:10px; max-height:65vh;"
     >
-        <wj-flex-grid-column binding="index" header="번호" width="2*" :isReadOnly="true" align="center" />
+        <wj-flex-grid-cell-template cellType="RowHeader" v-slot="cell">\{{cell.row.index + 1}}</wj-flex-grid-cell-template>
         {{#fieldDescriptors}}
         {{#if (isNotId nameCamelCase)}}
         {{#if (isNotName nameCamelCase)}}
