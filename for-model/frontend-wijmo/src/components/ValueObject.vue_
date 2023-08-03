@@ -45,26 +45,26 @@ path: frontend-wijmo/src/components
 <script>
 import BaseEntity from './base-ui/BaseEntity'
 
-    export default {
-        name: 'SalesItem',
-        mixins:[BaseEntity],
-        components:{
+export default {
+    name: '{{namePascalCase}}',
+    mixins:[BaseEntity],
+    components:{
+    },
+    data: () => ({
+        path: "{{#boundedContext}}{{#aggregates}}{{namePlural}}{{/aggregates}}{{/boundedContext}}salesOrders/{{namePlural}}",
+        itemToEdit: {
+            {{#fieldDescriptors}}
+            {{nameCamelCase}}: null,
+            {{/fieldDescriptors}}
         },
-        data: () => ({
-            path: "salesOrders/salesItems",
-            itemToEdit: {
-                {{#fieldDescriptors}}
-                {{nameCamelCase}}: null,
-                {{/fieldDescriptors}}
-            },
-        }),
-        created(){
-        },
-        computed:{
-        },
-        methods: {
-        },
-    }
+    }),
+    created(){
+    },
+    computed:{
+    },
+    methods: {
+    },
+}
 </script>
 
 
