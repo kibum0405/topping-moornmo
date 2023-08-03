@@ -49,13 +49,23 @@ export default {
     components:{
     },
     data: () => ({
+        path: '{{namePlural}}'
     }),
-    created(){
+    watch: {
+        value(val) {
+            this.$emit('input', val);
+        }
     },
-    computed:{
+    async created(){
+        if (this.value && this.value.id !== undefined) {
+            this.value = await this.repository.findById(this.value.id)
+        }
     },
     methods: {
-    },
+        pick(val){
+            this.$emit('input', val);
+        },
+    }
 }
 </script>
 
