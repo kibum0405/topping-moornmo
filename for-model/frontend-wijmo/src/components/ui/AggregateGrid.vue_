@@ -124,9 +124,9 @@ path: frontend-wijmo/src/components/ui
 
 <script>
 {{#contexts.views}}
-import {{namePascalCase}}Query from '../components/{{namePascalCase}}Query.vue';
+import {{namePascalCase}}Query from '../{{namePascalCase}}Query.vue';
 {{/contexts.views}}
-import {{namePascalCase}} from '../components/{{namePascalCase}}.vue'
+import {{namePascalCase}} from '../{{namePascalCase}}.vue'
 {{#aggregateRoot.fieldDescriptors}}
 {{#if isList}}
 import {{namePascalCase}}DetailGrid from './{{namePascalCase}}DetailGrid.vue'

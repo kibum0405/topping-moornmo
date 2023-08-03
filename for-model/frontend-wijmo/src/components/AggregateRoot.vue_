@@ -72,7 +72,7 @@ path: frontend-wijmo/src/components
 <script>
 const axios = require('axios').default;
 
-import {{namePascalCase}}Base from '../components/{{namePascalCase}}Base.vue'
+import BaseEntity from './base-ui/BaseEntity'
 
 import { RSocketClient } from 'rsocket-core';
 import RSocketWebSocketClient from 'rsocket-websocket-client';
@@ -82,7 +82,7 @@ import { IdentitySerializer, JsonSerializer } from "rsocket-core/build";
 
 export default {
     name: '{{namePascalCase}}',
-    mixins:[{{namePascalCase}}Base],
+    mixins:[BaseEntity],
     components:{
     },
     props: {
@@ -92,11 +92,7 @@ export default {
         offline: Boolean,
     },
     data: () => ({
-        snackbar: {
-            status: false,
-            timeout: 5000,
-            text: ''
-        },
+        path: "{{namePlural}}"
     {{#commands}}
     {{^isRestRepository}}
     {{#if (checkParam fieldDescriptors)}}
