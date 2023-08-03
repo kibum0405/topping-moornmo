@@ -24,7 +24,7 @@ import BaseRepository from '../../repository/BaseRepository';
     var _ = require('lodash');
 
     export default {
-        name: 'base-picker',
+        name: 'BasePicker',
         components:{},
         props: {
             value: [String, Object, Array, Number, Boolean],

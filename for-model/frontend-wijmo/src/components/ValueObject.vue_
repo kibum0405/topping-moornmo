@@ -49,12 +49,6 @@ export default {
     components:{
     },
     data: () => ({
-        path: "{{#incomingClassRefs}}{{#value}}{{namePlural}}{{/value}}{{/incomingClassRefs}}salesOrders/{{namePlural}}",
-        itemToEdit: {
-            {{#fieldDescriptors}}
-            {{nameCamelCase}}: null,
-            {{/fieldDescriptors}}
-        },
     }),
     created(){
     },
