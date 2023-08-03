@@ -3,14 +3,12 @@ fileName: {{namePascalCase}}.vue
 path: frontend-wijmo/src/components
 ---
 <template>
-    {{#referenceClass}}
     <div>
         <BasePicker v-if="editMode" searchApiPath="{{#boundedContext}}{{#aggregates}}{{namePlural}}{{/aggregates}}{{/boundedContext}}/search/{{#contexts.views}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}/Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
     </div>
-    {{/referenceClass}}
 
     {{^referenceClass}}
     <div>
@@ -51,7 +49,7 @@ export default {
     components:{
     },
     data: () => ({
-        path: "{{#boundedContext}}{{#aggregates}}{{namePlural}}{{/aggregates}}{{/boundedContext}}salesOrders/{{namePlural}}",
+        path: "{{#incomingClassRefs}}{{#value}}{{namePlural}}{{/value}}{{/incomingClassRefs}}salesOrders/{{namePlural}}",
         itemToEdit: {
             {{#fieldDescriptors}}
             {{nameCamelCase}}: null,
