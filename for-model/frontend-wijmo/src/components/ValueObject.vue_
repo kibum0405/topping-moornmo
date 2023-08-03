@@ -51,7 +51,7 @@ export default {
     components:{
     },
     data: () => ({
-        path: '/{{#toURL ../referenceClass}}{{/toURL}}/'
+        path: '/{{#referenceClass}}{{#toURL ../referenceClass}}{{/toURL}}{{/referenceClass}}/'
     }),
     watch: {
         value(val) {
@@ -83,7 +83,7 @@ export default {
     })
     window.$HandleBars.registerHelper('toURL', function (className) {
 
-        var pluralize = function(value, revert) {
+        var pluralize = function(value, revert){
 
             var plural = {
                 '(quiz)$'               : "$1zes",
@@ -163,46 +163,37 @@ export default {
             ];
 
             // save some time in the case that singular and plural are the same
-            // console.log("value = " + value)
-            if(uncountable.indexOf(value.toLowerCase()) >= 0) {
-                return this;
-            }
+            //console.log("value = " + value)
+            if(uncountable.indexOf(value.toLowerCase()) >= 0)
+            return this;
 
             // check for irregular forms
             for(var word in irregular){
 
-                if(revert) {
+                if(revert){
                     var pattern = new RegExp(irregular[word]+'$', 'i');
                     var replace = word;
-                } else {
-                    var pattern = new RegExp(word+'$', 'i');
+                } else{ var pattern = new RegExp(word+'$', 'i');
                     var replace = irregular[word];
                 }
-
-                if(pattern.test(value)) {
+                if(pattern.test(value))
                     return value.replace(pattern, replace);
-                }
             }
 
-            if(revert) {
-                var array = singular;
-            } else {
-                var array = plural;
-            }
+            if(revert) var array = singular;
+                else  var array = plural;
 
             // check for matches using regular expressions
-            for(var reg in array) {
+            for(var reg in array){
 
                 var pattern = new RegExp(reg, 'i');
 
-                if(pattern.test(value)) {
+                if(pattern.test(value))
                     return value.replace(pattern, array[reg]);
-                }
             }
 
             return value;
         }
-
         return pluralize(className.toLowerCase())
     })
     window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
