@@ -35,6 +35,7 @@ export default {
             status: false,
             text: ''
         },
+        itemToEdit: {},
     }),
     mixins:[
         BaseEntity
