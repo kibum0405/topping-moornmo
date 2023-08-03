@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <BasePicker v-if="editMode" searchApiPath="{{#boundedContext}}{{#aggregates}}{{namePlural}}{{/aggregates}}{{/boundedContext}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}/Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="editMode" searchApiPath="{{#boundedContext}}{{#aggregates}}{{namePlural}}{{/aggregates}}{{/boundedContext}}/search/{{#contexts.views}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}/Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
@@ -69,6 +69,14 @@ export default {
 
 
 <function>
+    var me = this;
+    me.contexts.views = [];
+    if(this.boundedContext.readModels)
+    this.boundedContext.readModels.forEach(view=>{
+        if(view.aggregate == me && view.dataProjection=="query-for-aggregate"){
+            me.contexts.views.push(view);
+        }
+    })
     window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
         if(displayName){
 	        return displayName;
