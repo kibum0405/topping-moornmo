@@ -137,8 +137,15 @@ export default {
     name : 'company-grid',
     mixins:[BaseGrid],
     components:{
+    {{#contexts.views}}
         {{namePascalCase}}Query,
+    {{/contexts.views}}
         {{namePascalCase}},
+    {{#aggregateRoot.fieldDescriptors}}
+    {{#if isList}}
+        {{namePascalCase}}DetailGrid
+    {{/if}}
+    {{/aggregateRoot.fieldDescriptors}}
     },
     data: () => ({
         path: '{{namePlural}}',
