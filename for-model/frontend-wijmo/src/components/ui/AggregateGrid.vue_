@@ -86,14 +86,12 @@ path: frontend-wijmo/src/components/ui
                             >mdi-close</v-icon>
                         </v-toolbar>
                         <v-card-text>
-                        <div>
                             <{{namePascalCase}} :offline="offline"
                                 :isNew="!itemToEdit"
                                 :editMode="true"
                                 v-model="itemToEdit"
                                 @add="append"
                             />
-                        </div>
                         </v-card-text>
                     </v-card>
                 </template>

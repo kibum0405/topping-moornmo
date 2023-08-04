@@ -5,17 +5,15 @@ path: frontend-wijmo/src/components
 <template>
     <div>
         <div>
-            <v-col>
-                {{#aggregateRoot.fieldDescriptors}}
-                {{#if (isNotId nameCamelCase)}}
-                {{#if (isPrimitive className)}}
-                <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
-                <{{getPrimitiveType className}} label="입력하세요." v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
-                {{else}}
-                {{/if}}
-                {{/if}}
-                {{/aggregateRoot.fieldDescriptors}}
-            </v-col>
+            {{#aggregateRoot.fieldDescriptors}}
+            {{#if (isNotId nameCamelCase)}}
+            {{#if (isPrimitive className)}}
+            <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
+            <{{getPrimitiveType className}} label="입력하세요." v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
+            {{else}}
+            {{/if}}
+            {{/if}}
+            {{/aggregateRoot.fieldDescriptors}}
         </div>
 
         <div>

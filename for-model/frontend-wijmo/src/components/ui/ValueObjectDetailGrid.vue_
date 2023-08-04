@@ -1,5 +1,5 @@
 forEach: ValueObject
-fileName: {{namePascalCase}}DetailGrid.vue
+fileName: {{namePascalCase}}sDetailGrid.vue
 path: frontend-wijmo/src/components/ui
 ---
 <template>
@@ -29,22 +29,17 @@ path: frontend-wijmo/src/components/ui
 </template>
 
 <script>
-import '@grapecity/wijmo.touch';
-import '@grapecity/wijmo.vue2.grid';
+import BaseDetailGrid from '../base-ui/BaseDetailGrid';
+import SalesItem from '../SalesItem.vue';
 
 export default {
-    name: '{{nameCamelCase}}DetailGrid',
-    props: {
-        selectedGrid: {
-            type: Array,
-            required: true
-        }
-    },
+    name: 'SalesItemsDetailGrid',
+    mixins: [BaseDetailGrid],
+    components: [
+        SalesItem
+    ],
     methods: {
-        flexDetailsInitialized(flexGridDetails) {
-            this.$refs.flexGridDetails = flexGridDetails;
-        },
-    },
+    }
 }
 </script>
 
