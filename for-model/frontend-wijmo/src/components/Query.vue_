@@ -58,7 +58,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
         data: () => ({
             editMode: true,
             value: {
-                apiPath: '{{namePlural}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}/Query',
+                apiPath: '{{#contexts.views}}{{namePlural}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}Query',
                 parameters: {}
             },
         }),
@@ -89,6 +89,14 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
 
 
 <function>
+var me = this;
+    me.contexts.views = [];
+    if(this.boundedContext.readModels)
+    this.boundedContext.readModels.forEach(view=>{
+        if(view.aggregate == me && view.dataProjection=="query-for-aggregate"){
+            me.contexts.views.push(view);
+        }
+    })
 //if(this.queryParameters!=null) alert(this.queryParameters)
     window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
         if(displayName){
