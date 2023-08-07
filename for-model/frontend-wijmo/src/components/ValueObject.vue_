@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}Query" searchParameterName="name" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="name" path="{{#toURL ../referenceClass}}{{/toURL}}" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
@@ -83,6 +83,20 @@ export default {
             me.contexts.views.push(view);
         }
     })
+    window.$HandleBars.registerHelper('getKey', function (fieldDescriptors) {
+        for(var i = 0; i < fieldDescriptors.length; i ++ ){
+            if(fieldDescriptors[i] && fieldDescriptors[i].isKey == true){
+                return fieldDescriptors[i].name
+            }
+        }
+    });
+
+    window.$HandleBars.registerHelper('getNameField', function (queryParameters) {
+        for(var i = 0; i < queryParameters.length; i ++ ){
+            return queryParameters[0].name
+        }
+    });
+
     window.$HandleBars.registerHelper('toURL', function (className) {
 
         var pluralize = function(value, revert){
