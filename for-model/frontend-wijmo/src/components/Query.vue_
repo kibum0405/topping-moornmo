@@ -58,7 +58,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
         data: () => ({
             editMode: true,
             value: {
-                apiPath: '{{#contexts.views}}{{namePlural}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}Query',
+                apiPath: '{{namePlural}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}Query',
                 parameters: {}
             },
         }),
