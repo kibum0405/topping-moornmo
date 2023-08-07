@@ -35,7 +35,7 @@ path: frontend-wijmo/src/components
         {{/aggregateRoot.fieldDescriptors}}
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
-        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{removeLastS namePascalCase}}" :editMode="editMode" @change="change" />
+        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{nameCamelCase}}" :editMode="editMode" @change="change" />
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
 
@@ -88,12 +88,6 @@ export default {
 
 
 <function>
-    window.$HandleBars.registerHelper('removeLastS', function(value) {
-        if (value && typeof value === 'string' && value.endsWith('s')) {
-            return value.slice(0, -1);
-        }
-        return value;
-    })
     window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
         if(displayName){
 	        return displayName;

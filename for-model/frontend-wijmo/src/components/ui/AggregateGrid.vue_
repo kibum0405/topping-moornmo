@@ -72,7 +72,7 @@ path: frontend-wijmo/src/components/ui
         </wj-flex-grid>
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
-        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{removeLastS namePascalCase}}" />
+        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{nameCamelCase}}" />
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
         <v-col>
@@ -173,12 +173,6 @@ this.boundedContext.readModels.forEach(view=>{
     if(view.aggregate == me && view.dataProjection=="query-for-aggregate"){
         me.contexts.views.push(view);
     }
-})
-window.$HandleBars.registerHelper('removeLastS', function(value) {
-    if (value && typeof value === 'string' && value.endsWith('s')) {
-        return value.slice(0, -1);
-    }
-    return value;
 })
 
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
