@@ -172,16 +172,14 @@ new Vue({
 <function>
 window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
     try{
-        if(!selectedSecurity)
-            return false;
-        
+        var isSelectedSecurity = false
         for(var i=0; i<isSelectedSecurity.length; i++){
             if(selectedSecurity[i] == 'isKeycloakSecurity'){
-                return true;
+                isSelectedSecurity =  true;
             }
         }
 
-        return;
+        return isSelectedSecurity;
     } catch(e){
         console.log(e)
     }
