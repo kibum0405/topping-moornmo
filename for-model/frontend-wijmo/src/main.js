@@ -173,7 +173,7 @@ new Vue({
 window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
     try{
         var isSelectedSecurity = false
-        for(var i=0; i<isSelectedSecurity.length; i++){
+        for(var i=0; i<selectedSecurity.length; i++){
             if(selectedSecurity[i] == 'keycloak-security'){
                 isSelectedSecurity =  true;
             }
