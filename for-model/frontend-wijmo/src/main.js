@@ -174,7 +174,7 @@ window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecuri
     try{
         var isSelectedSecurity = false
         for(var i=0; i<isSelectedSecurity.length; i++){
-            if(selectedSecurity[i] == 'isKeycloakSecurity'){
+            if(selectedSecurity[i] == 'keycloak-security'){
                 isSelectedSecurity =  true;
             }
         }
