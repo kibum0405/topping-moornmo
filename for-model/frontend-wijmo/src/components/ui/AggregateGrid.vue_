@@ -133,7 +133,7 @@ import {{namePascalCase}}DetailGrid from './{{namePascalCase}}DetailGrid.vue'
 import BaseGrid from '../base-ui/BaseGrid'
 
 export default {
-    name : '{{namePascalCase}}
+    name : '{{namePascalCase}}Grid',
     mixins:[BaseGrid],
     components:{
     {{#contexts.views}}
