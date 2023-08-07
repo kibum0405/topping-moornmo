@@ -34,6 +34,7 @@ export default {
             status: false,
             text: ''
         },
+        userRole: '',
     }),
     mixins:[
         BaseEntity
@@ -48,6 +49,7 @@ export default {
 
         this.dataService = new DataService();
         this.exportService = new ExportService();
+        this.getUserRole();
     }, 
     beforeDestroy() {
         this.exportService.cancelExcelExport();
@@ -204,6 +206,11 @@ export default {
 
             return me.value;
         },
+        getUserRole(){
+            var me= this;
+
+            me.userRole = me.$OAuth.tokenParsed.realm_access.roles.join(",")
+        }
     },
     filters: {
         safeCurrency: function (value) {
