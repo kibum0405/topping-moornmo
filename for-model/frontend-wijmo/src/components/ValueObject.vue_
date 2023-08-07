@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#contexts.views}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#boundedContext.aggregates}}{{#outgoingRelations}}{{#target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/boundedContext.aggregates}}Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
