@@ -34,7 +34,7 @@ export default {
             status: false,
             text: ''
         },
-        {{#if isSelectedSecurity options.rootModel.toppingPlatforms}}
+        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
         userRole: '',
         {{/if}}
     }),
@@ -51,7 +51,7 @@ export default {
 
         this.dataService = new DataService();
         this.exportService = new ExportService();
-        {{#if isSelectedSecurity options.rootModel.toppingPlatforms}}
+        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
         this.getUserRole();
         {{/if}}
     }, 
@@ -210,7 +210,7 @@ export default {
 
             return me.value;
         },
-        {{#if isSelectedSecurity options.rootModel.toppingPlatforms}}
+        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
         getUserRole(){
             var me= this;
 
