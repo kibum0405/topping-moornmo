@@ -23,17 +23,12 @@ path: frontend-wijmo/src/components
 </template>
 
 <script>
+import BaseEntity from './base-ui/BaseEntity.vue';
     export default {
         name: '{{namePascalCase}}',
+        mixins:[BaseEntity],
         components:{},
-        props: {
-            value: [Object, String, Number, Boolean, Array],
-            editMode: Boolean,
-            isNew: Boolean,
-            offline: Boolean,
-            inList: Boolean,
-            label: String,
-        },
+        props: {},
         data: () => ({
             {{nameCamelCase}}List : [{{#items}} "{{value}}", {{/items}}],
             newValue: '',
