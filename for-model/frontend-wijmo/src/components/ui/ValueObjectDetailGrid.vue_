@@ -48,7 +48,7 @@ import BaseDetailGrid from '../base-ui/BaseDetailGrid';
 import {{namePascalCase}} from '../{{namePascalCase}}.vue';
 
 export default {
-    name: '{{nameCamelCase}}sDetailGrid',
+    name: '{{namePascalCase}}sDetailGrid',
     mixins: [BaseDetailGrid],
     components: [
         {{namePascalCase}}

@@ -33,7 +33,7 @@ fileName: App.vue
                     ></span> 
                 <v-spacer></v-spacer>
 
-                {{#if (isSelectedSecurity selectedSecurity)}}
+                {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
                 <b style="margin-left:10px">\{{username}} 님</b>
                 <v-btn
                     text
@@ -178,7 +178,7 @@ export default {
         components: [],
         sideBar: true,
         urlPath: null,
-        {{#if (isSelectedSecurity selectedSecurity)}}
+        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
         username: '',
         {{else}}
         {{/if}}
@@ -188,9 +188,10 @@ export default {
       var path = document.location.href.split("#/")
       this.urlPath = path[1];
 
-      {{#if (isSelectedSecurity selectedSecurity)}}
+      {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
+
       var me = this
-      me.username = localStorage.getItem('preferred_username')
+      me.username = me.$OAuth.idTokenParsed.preferred_username
 
       if(!me.username){
           location.reload()
@@ -215,7 +216,7 @@ export default {
         goHome() {
             this.urlPath = null;
         },
-        {{#if (isSelectedSecurity selectedSecurity)}}
+        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
         logout(){
             //const keycloak = new Keycloak();
 
@@ -234,18 +235,18 @@ export default {
 </style>
 
 <function>
-	window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
-		try{
-			if(!selectedSecurity)
-				return false;
+window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
+    try{
+        var isSelectedSecurity = false
+        for(var i=0; i<selectedSecurity.length; i++){
+            if(selectedSecurity[i] == 'keycloak-security'){
+                isSelectedSecurity =  true;
+            }
+        }
 
-			if(selectedSecurity == 'isKeycloakSecurity'){
-				return true;
-			}
-
-			return;
-		} catch(e){
-		console.log(e)
-		}
-  	});
+        return isSelectedSecurity;
+    } catch(e){
+        console.log(e)
+    }
+});
 </function>
