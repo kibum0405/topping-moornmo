@@ -9,7 +9,7 @@ path: frontend-wijmo/src/components/base-ui
      import BaseGrid from './BaseGrid.vue';
  
      export default {
-         name: 'base-detail-grid',
+         name: 'BaseDetailGrid',
          mixins:[BaseGrid],
          
          async created() {
