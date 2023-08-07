@@ -34,7 +34,9 @@ export default {
             status: false,
             text: ''
         },
+        {{#if isSelectedSecurity options.rootModel.toppingPlatforms}}
         userRole: '',
+        {{/if}}
     }),
     mixins:[
         BaseEntity
@@ -49,7 +51,9 @@ export default {
 
         this.dataService = new DataService();
         this.exportService = new ExportService();
+        {{#if isSelectedSecurity options.rootModel.toppingPlatforms}}
         this.getUserRole();
+        {{/if}}
     }, 
     beforeDestroy() {
         this.exportService.cancelExcelExport();
@@ -206,11 +210,13 @@ export default {
 
             return me.value;
         },
+        {{#if isSelectedSecurity options.rootModel.toppingPlatforms}}
         getUserRole(){
             var me= this;
 
             me.userRole = me.$OAuth.tokenParsed.realm_access.roles.join(",")
         }
+        {{/if}}
     },
     filters: {
         safeCurrency: function (value) {
