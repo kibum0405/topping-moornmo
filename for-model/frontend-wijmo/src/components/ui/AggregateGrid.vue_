@@ -174,12 +174,12 @@ this.boundedContext.readModels.forEach(view=>{
         me.contexts.views.push(view);
     }
 })
-window.$Handlebars.registerHelper('removeLastS', function(value) {
-  if (value && typeof value === 'string' && value.endsWith('s')) {
-    return value.slice(0, -1);
-  }
-  return value;
-});
+window.$HandleBars.registerHelper('removeLastS', function(value) {
+    if (value && typeof value === 'string' && value.endsWith('s')) {
+        return value.slice(0, -1);
+    }
+    return value;
+})
 
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
     if(displayName){

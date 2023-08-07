@@ -88,12 +88,12 @@ export default {
 
 
 <function>
-    window.$Handlebars.registerHelper('removeLastS', function(value) {
+    window.$HandleBars.registerHelper('removeLastS', function(value) {
         if (value && typeof value === 'string' && value.endsWith('s')) {
             return value.slice(0, -1);
         }
         return value;
-    });
+    })
     window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
         if(displayName){
 	        return displayName;
