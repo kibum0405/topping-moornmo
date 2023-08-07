@@ -11,7 +11,7 @@ path: frontend-wijmo/src/components/base-ui
     const BaseRepository = require('../../repository/BaseRepository')
 
     export default{
-        name: 'base-entity-ui',
+        name: 'baseEntityUi',
         props: {
             offline: Boolean,
             value: [Object, String, Number, Boolean, Array],
