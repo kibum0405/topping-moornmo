@@ -72,7 +72,7 @@ path: frontend-wijmo/src/components/ui
         </wj-flex-grid>
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
-        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.salesItem" />
+        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{nameCamelCase}}" />
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
         <v-col>
