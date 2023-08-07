@@ -170,18 +170,20 @@ new Vue({
 {{/if}}
 
 <function>
-	window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
-		try{
-			if(!selectedSecurity)
-				return false;
+window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
+    try{
+        if(!selectedSecurity)
+            return false;
+        
+        for(var i=0; i<isSelectedSecurity.length; i++){
+            if(selectedSecurity[i] == 'isKeycloakSecurity'){
+                return true;
+            }
+        }
 
-			if(selectedSecurity == 'isKeycloakSecurity'){
-				return true;
-			}
-
-			return;
-		} catch(e){
-		console.log(e)
-		}
-  	});
+        return;
+    } catch(e){
+        console.log(e)
+    }
+  });
 </function>
