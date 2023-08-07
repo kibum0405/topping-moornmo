@@ -3,15 +3,13 @@ fileName: {{namePascalCase}}.vue
 path: frontend-wijmo/src/components
 ---
 <template>
-    
     <div>
-        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#boundedContext.aggregates}}{{#outgoingRelations}}{{#target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/boundedContext.aggregates}}Query" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#boundedContext.aggregates}}{{#outgoingRelations}}{{#target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/boundedContext.aggregates}}QueryQuery" searchParameterName="name" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
     </div>
 
-    {{^referenceClass}}
     <div>
         <div class="detail-title">
         {{namePascalCase}}
@@ -38,7 +36,6 @@ path: frontend-wijmo/src/components
             <slot name="actions"></slot>
         </v-card-actions>
     </div>
-    {{/referenceClass}}
 </template>
 
 <script>
