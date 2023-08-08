@@ -16,7 +16,7 @@ path: frontend-wijmo/src/components
                 ></v-select>
             </div>
             <div v-else style="margin-top:-20px;">
-                {{namePascalCase}} : \{{ value }}
+                {{pascalCase name}} : \{{ value }}
             </div>
         </v-card-text>
     </div>
