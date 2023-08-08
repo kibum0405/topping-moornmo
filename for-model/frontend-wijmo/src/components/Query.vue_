@@ -58,6 +58,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
         data: () => ({
             editMode: true,
             value: {
+                attachedPathTest: '{{#attached 'Aggregate' this}}{{namePlural}}{{/attached}}
                 apiPath: '{{#getAggregate attached}}{{/getAggregate}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}Query',
                 parameters: {}
             },
