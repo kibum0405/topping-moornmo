@@ -25,7 +25,7 @@ path: frontend-wijmo/src/components
         {{/aggregateRoot.fieldDescriptors}}
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
-        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
+        <{{namePascalCase}}DetailGrid offline v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
 

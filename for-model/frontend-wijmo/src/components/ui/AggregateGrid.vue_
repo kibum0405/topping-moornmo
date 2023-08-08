@@ -72,7 +72,7 @@ path: frontend-wijmo/src/components/ui
         </wj-flex-grid>
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
-        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{nameCamelCase}}" />
+        <{{namePascalCase}}DetailGrid offline v-if="selectedRow" v-model="selectedRow.{{nameCamelCase}}"/>
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
         <v-col>
@@ -137,11 +137,6 @@ path: frontend-wijmo/src/components/ui
 import {{namePascalCase}}Query from '../{{namePascalCase}}Query.vue';
 {{/contexts.views}}
 import {{namePascalCase}} from '../{{namePascalCase}}.vue'
-{{#aggregateRoot.fieldDescriptors}}
-{{#if isList}}
-import {{namePascalCase}}DetailGrid from './{{namePascalCase}}DetailGrid.vue'
-{{/if}}
-{{/aggregateRoot.fieldDescriptors}}
 import BaseGrid from '../base-ui/BaseGrid'
 
 export default {
@@ -152,11 +147,6 @@ export default {
         {{namePascalCase}}Query,
     {{/contexts.views}}
         {{namePascalCase}},
-    {{#aggregateRoot.fieldDescriptors}}
-    {{#if isList}}
-        {{namePascalCase}}DetailGrid
-    {{/if}}
-    {{/aggregateRoot.fieldDescriptors}}
     },
     data: () => ({
         path: '{{namePlural}}',
@@ -179,9 +169,15 @@ let postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.contr
 let putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT")
 let deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE")
 
-let postActorName = postCmd.attached.find(ele => ele._type.includes("Actor"))
-let putActorName = putCmd.attached.find(ele => ele._type.includes("Actor"))
-let deleteActorName = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
+let postActor = postCmd.attached.find(ele => ele._type.includes("Actor"))
+let putActor = putCmd.attached.find(ele => ele._type.includes("Actor"))
+let deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
+
+options.actors = {
+    postActor: postActor,
+    putActor: putActor,
+    deleteActor: deleteActor
+}
 
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
     if(displayName){

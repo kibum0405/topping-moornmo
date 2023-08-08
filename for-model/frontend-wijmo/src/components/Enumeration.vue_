@@ -10,9 +10,9 @@ path: frontend-wijmo/src/components
         <v-card-text>
             <div v-if="editMode" style="margin-top:-20px;">
                 <v-select
-                        v-model="newValue"
-                        :label="'{{pascalCase name}}'"
-                        :items="{{camelCase name}}List"
+                    v-model="newValue"
+                    :label="'{{pascalCase name}}'"
+                    :items="{{camelCase name}}List"
                 ></v-select>
             </div>
             <div v-else style="margin-top:-20px;">
