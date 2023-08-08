@@ -58,7 +58,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
         data: () => ({
             editMode: true,
             value: {
-                apiPath: '{{#getAggregate attached}}{{/getAggregate}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}Query',
+                apiPath: '{{#getAggregate attached}}{{namePlural}}{{/getAggregate}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}Query',
                 parameters: {}
             },
         }),
@@ -100,7 +100,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
     window.$HandleBars.registerHelper('getAggregate', function (attached) {
         for(var i = 0; i < attached.length; i ++ ){
             if(attached[i] && attached[i].type == 'Aggregate'){
-                return attached[i].namePlural;
+                return attached[i]
             }
         }
     });
