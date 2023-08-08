@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}Query" searchParameterName="name" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="name" path="{{#toURL ../referenceClass}}{{/toURL}}" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#../target.attached}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/target.attached}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}Query" searchParameterName="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" path="{{#toURL ../referenceClass}}{{/toURL}}" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
@@ -91,9 +91,11 @@ export default {
         }
     });
 
-    window.$HandleBars.registerHelper('getNameField', function (queryParameters) {
-        for(var i = 0; i < queryParameters.length; i ++ ){
-            return queryParameters[0].name
+    window.$HandleBars.registerHelper('getNameField', function (fieldDescriptors) {
+        for(var i = 0; i < fieldDescriptors.length; i ++ ){
+            if(fieldDescriptors[i] && fieldDescriptors[i].isName == true){
+                return fieldDescriptors[i].name
+            }
         }
     });
 
