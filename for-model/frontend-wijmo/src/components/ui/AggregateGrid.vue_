@@ -169,9 +169,15 @@ let postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.contr
 let putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT")
 let deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE")
 
-let postActorName = postCmd.attached.find(ele => ele._type.includes("Actor"))
-let putActorName = putCmd.attached.find(ele => ele._type.includes("Actor"))
-let deleteActorName = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
+let postActor = postCmd.attached.find(ele => ele._type.includes("Actor"))
+let putActor = putCmd.attached.find(ele => ele._type.includes("Actor"))
+let deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
+
+me.options.actors = {
+    postActor: postActor,
+    putActor: putActor,
+    deleteActor: deleteActor
+}
 
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
     if(displayName){
