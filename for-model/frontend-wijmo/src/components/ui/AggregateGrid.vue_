@@ -6,13 +6,13 @@ path: frontend-wijmo/src/components/ui
     <div style="max-height:80vh;">
         <div class="gs-bundle-of-buttons" style="max-height:10vh;">
             {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-                <v-btn @click="addNewRow" small color="primary" >
+                <v-btn @click="addNewRow" small color="primary" :disabled="!userRoles.includes('{{contexts.options.postActor.name}}')">
                     <v-icon small>mdi-plus-circle-outline</v-icon>등록
                 </v-btn>
-                <v-btn  @click="editSelectedRow" small color="primary">
+                <v-btn  @click="editSelectedRow" small color="primary" :disabled="!userRoles.includes('{{contexts.options.putActor.name}}')">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
-                <v-btn @click="deleteSelectedRows" small color="primary">
+                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!userRoles.includes('{{contexts.options.deleteActor.name}}')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>삭제
                 </v-btn>
             {{else}}
@@ -163,26 +163,26 @@ if (me && me.attached) {
     var putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT");
     var deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE");
 
-    me.contexts.actors = {};
+    me.options.actors = {};
 
     if (postCmd && postCmd.attached) {
         var postActor = postCmd.attached.find(ele => ele._type.includes("Actor"));
         if (postActor) {
-            me.contexts.actors.postActor = postActor;
+            me.options.actors.postActor = postActor;
         }
     }
     
     if (putCmd && putCmd.attached) {
         var putActor = putCmd.attached.find(ele => ele._type.includes("Actor"));
         if (putActor) {
-            me.contexts.actors.putActor = putActor;
+            me.options.actors.putActor = putActor;
         }
     }
     
     if (deleteCmd && deleteCmd.attached) {
         var deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"));
         if (deleteActor) {
-            me.contexts.actors.deleteActor = deleteActor;
+            me.options.actors.deleteActor = deleteActor;
         }
     }
 }
