@@ -6,13 +6,13 @@ path: frontend-wijmo/src/components/ui
     <div style="max-height:80vh;">
         <div class="gs-bundle-of-buttons" style="max-height:10vh;">
             {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-                <v-btn @click="addNewRow" small color="primary" :disabled="!userRoles.includes('{{contexts.actors.postActor.name}}')">
+                <v-btn @click="addNewRow" small color="primary" >
                     <v-icon small>mdi-plus-circle-outline</v-icon>등록
                 </v-btn>
-                <v-btn  @click="editSelectedRow" small color="primary" :disabled="!userRoles.includes('{{contexts.actors.putActor.name}}')">
+                <v-btn  @click="editSelectedRow" small color="primary">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
-                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!userRoles.includes('{{contexts.actors.deleteActor.name}}')">
+                <v-btn @click="deleteSelectedRows" small color="primary">
                     <v-icon small>mdi-minus-circle-outline</v-icon>삭제
                 </v-btn>
             {{else}}
@@ -156,31 +156,6 @@ export default {
 }
 </script>
 <function>
-var me = this;
-me.contexts.views = [];
-if(this.boundedContext.readModels)
-this.boundedContext.readModels.forEach(view=>{
-    if(view.aggregate == me && view.dataProjection=="query-for-aggregate"){
-        me.contexts.views.push(view);
-    }
-})
-
-if(me.attached){
-    let postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST")
-    let putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT")
-    let deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE")
-    
-    let postActor = postCmd.attached.find(ele => ele._type.includes("Actor"))
-    let putActor = putCmd.attached.find(ele => ele._type.includes("Actor"))
-    let deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
-    
-    me.contexts.actors = {
-        postActor: postActor,
-        putActor: putActor,
-        deleteActor: deleteActor
-    }
-}
-
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
     if(displayName){
         return displayName;
