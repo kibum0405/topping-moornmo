@@ -51,7 +51,7 @@ export default {
     components:{
     },
     data: () => ({
-        path: '{{#if referenceClass}}{{#toURL ..name}}{{/toURL}}{{else}}{{namePlural}}{{/if}}',
+        path: '{{#if referenceClass}}{{#toURL referenceClass}}{{/toURL}}{{else}}{{namePlural}}{{/if}}',
     }),
     watch: {
         value(val){
