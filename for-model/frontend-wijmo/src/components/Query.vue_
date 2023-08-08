@@ -98,11 +98,13 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
         }
     })
     window.$HandleBars.registerHelper('getAggregate', function (attached) {
-        for(var i = 0; i < attached.length; i ++ ){
-            if(attached[i] && attached[i].type == 'Aggregate'){
-                return attached[i]
+        let codeType
+        attached.forEach(function(code){
+            if(code && code.type == 'Aggregate'){
+                codeType = code;
             }
-        }
+        });
+        return codeType
     });
     window.$HandleBars.registerHelper('print', function (value) {
         console.log(value)
