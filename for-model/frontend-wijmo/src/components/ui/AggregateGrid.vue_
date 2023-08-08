@@ -157,16 +157,15 @@ export default {
 </script>
 <function>
 var me = this;
-me.contexts.actors = {}
 
-if(!(Object.keys(me.attached).length === 0))
-let postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST");
-let putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT");
-let deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE");
+if(me.attached)
+var postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST");
+var putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT");
+var deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE");
 
-let postActor = postCmd.attached.find(ele => ele._type.includes("Actor"));
-let putActor = putCmd.attached.find(ele => ele._type.includes("Actor"));
-let deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"));
+var postActor = postCmd.attached.find(ele => ele._type.includes("Actor"));
+var putActor = putCmd.attached.find(ele => ele._type.includes("Actor"));
+var deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"));
 
 me.contexts.actors = {
     postActor: postActor,
