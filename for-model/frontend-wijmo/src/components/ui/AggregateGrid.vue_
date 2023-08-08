@@ -173,7 +173,7 @@ let postActor = postCmd.attached.find(ele => ele._type.includes("Actor"))
 let putActor = putCmd.attached.find(ele => ele._type.includes("Actor"))
 let deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
 
-me.options.actors = {
+options.actors = {
     postActor: postActor,
     putActor: putActor,
     deleteActor: deleteActor
