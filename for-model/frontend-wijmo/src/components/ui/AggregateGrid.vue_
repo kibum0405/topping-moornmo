@@ -176,6 +176,12 @@ this.boundedContext.readModels.forEach(view=>{
 })
 
 let postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST")
+let putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT")
+let deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE")
+
+let postActorName = postCmd.attached.find(ele => ele._type.includes("Actor"))
+let putActorName = putCmd.attached.find(ele => ele._type.includes("Actor"))
+let deleteActorName = deleteCmd.attached.find(ele => ele._type.includes("Actor"))
 
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
     if(displayName){
