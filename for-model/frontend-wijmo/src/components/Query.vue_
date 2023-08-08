@@ -1,5 +1,5 @@
 forEach: View
-fileName: {{namePascalCase}}Query.vue
+fileName: {{namePascalCase}}.vue
 path: frontend-wijmo/src/components
 except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/ifEquals}}
 
@@ -52,7 +52,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
 
 <script>
     export default {
-        name: '{{namePascalCase}}Query',
+        name: '{{namePascalCase}}',
         components:{},
         props: {},
         data: () => ({

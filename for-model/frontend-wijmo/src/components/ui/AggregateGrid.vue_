@@ -29,7 +29,7 @@ path: frontend-wijmo/src/components/ui
             <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
         </div>
         {{#contexts.views}}
-        <{{namePascalCase}}Query @search="search"></{{namePascalCase}}Query>
+        <{{namePascalCase}} @search="search"></{{namePascalCase}}>
         {{/contexts.views}}
 
         <!-- the grid -->
@@ -134,7 +134,7 @@ path: frontend-wijmo/src/components/ui
 
 <script>
 {{#contexts.views}}
-import {{namePascalCase}}Query from '../{{namePascalCase}}Query.vue';
+import {{namePascalCase}} from '../{{namePascalCase}}.vue';
 {{/contexts.views}}
 import {{namePascalCase}} from '../{{namePascalCase}}.vue'
 import BaseGrid from '../base-ui/BaseGrid'
@@ -144,7 +144,7 @@ export default {
     mixins:[BaseGrid],
     components:{
     {{#contexts.views}}
-        {{namePascalCase}}Query,
+        {{namePascalCase}},
     {{/contexts.views}}
         {{namePascalCase}},
     },
