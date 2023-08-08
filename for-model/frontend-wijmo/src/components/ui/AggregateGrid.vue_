@@ -156,36 +156,6 @@ export default {
 }
 </script>
 <function>
-var me = this;
-
-if (me && me.attached) {
-    var postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST");
-    var putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT");
-    var deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE");
-
-    me.actors = {};
-
-    if (postCmd && postCmd.attached) {
-        var postActor = postCmd.attached.find(ele => ele._type.includes("Actor"));
-        if (postActor) {
-            me.actors.postActor = postActor;
-        }
-    }
-    
-    if (putCmd && putCmd.attached) {
-        var putActor = putCmd.attached.find(ele => ele._type.includes("Actor"));
-        if (putActor) {
-            me.actors.putActor = putActor;
-        }
-    }
-    
-    if (deleteCmd && deleteCmd.attached) {
-        var deleteActor = deleteCmd.attached.find(ele => ele._type.includes("Actor"));
-        if (deleteActor) {
-            me.actors.deleteActor = deleteActor;
-        }
-    }
-}
 
 window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
     if(displayName){
