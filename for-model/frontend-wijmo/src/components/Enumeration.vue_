@@ -5,14 +5,14 @@ path: frontend-wijmo/src/components
 <template>
     <div style="margin: 0 -15px 0 -15px;">
         <v-card-title>
-            {{namePascalCase}}
+            {{pascalCase name}}
         </v-card-title>
         <v-card-text>
             <div v-if="editMode" style="margin-top:-20px;">
                 <v-select
                         v-model="newValue"
-                        :label="'{{namePascalCase}}'"
-                        :items="{{nameCamelCase}}List"
+                        :label="'{{pascalCase name}}'"
+                        :items="{{camelCase name}}List"
                 ></v-select>
             </div>
             <div v-else style="margin-top:-20px;">
@@ -24,32 +24,33 @@ path: frontend-wijmo/src/components
 
 <script>
 import BaseEntity from './base-ui/BaseEntity.vue';
-    export default {
-        name: '{{pascalCase name}}',
-        mixins:[BaseEntity],
-        components:{},
-        props: {},
-        data: () => ({
-            {{nameCamelCase}}List : [{{#items}} "{{value}}", {{/items}}],
-            newValue: '',
-        }),
-        async created() {
-            if(!this.value) {
-                this.newValue = this.{{nameCamelCase}}List[0];
-            } else {
-                this.newValue = this.value;
-            }
-        },
-        watch: {
-            value(val) {
-                this.$emit('input', val);
-            },
-            newValue(val) {
-                this.$emit('input', val);
-            },
-        },
-        methods: {
+
+export default {
+    name: '{{pascalCase name}}',
+    mixins:[BaseEntity],
+    components:{},
+    props: {},
+    data: () => ({
+        {{camelCase name}}List : [{{#items}} "{{value}}", {{/items}}],
+        newValue: '',
+    }),
+    async created() {
+        if(!this.value) {
+            this.newValue = this.{{camelCase name}}List[0];
+        } else {
+            this.newValue = this.value;
         }
+    },
+    watch: {
+        value(val) {
+            this.$emit('input', val);
+        },
+        newValue(val) {
+            this.$emit('input', val);
+        },
+    },
+    methods: {
     }
+}
 </script>
 
