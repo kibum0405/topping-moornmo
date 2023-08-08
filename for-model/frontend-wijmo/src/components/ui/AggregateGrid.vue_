@@ -162,7 +162,9 @@ if (me && me.attached) {
     var postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST");
     var putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT");
     var deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE");
-    
+
+    me.contexts.actors = {};
+
     if (postCmd && postCmd.attached) {
         var postActor = postCmd.attached.find(ele => ele._type.includes("Actor"));
         if (postActor) {
