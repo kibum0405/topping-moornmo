@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#../boundedContext}}{{#attached 'ReadModel' this}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/attached}}{{/../boundedContext}}Query" searchParameterName="name" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="name" path="{{#toURL ../referenceClass}}{{/toURL}}" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="editMode" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#attached 'ReadModel' this}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/attached}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}Query" searchParameterName="name" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="name" path="{{#toURL ../referenceClass}}{{/toURL}}" :label="label" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else>
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
