@@ -159,7 +159,7 @@ export default {
 var me = this;
 me.contexts.actors = {}
 
-if(!(Object.keys(me.attached).length === 0))
+if(me.attached)
 let postCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="POST");
 let putCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="PUT");
 let deleteCmd = me.attached.find(ele => ele._type.includes("Command") && ele.controllerInfo.method=="DELETE");
