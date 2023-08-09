@@ -184,12 +184,6 @@ export default {
       this.urlPath = path[1];
     },
 
-    computed: {
-        username(){
-            return this.getUserName();
-        }
-    },
-
     mounted() {
         var me = this;
         me.components = this.$ManagerLists;
