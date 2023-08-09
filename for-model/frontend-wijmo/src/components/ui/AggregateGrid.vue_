@@ -6,13 +6,13 @@ path: frontend-wijmo/src/components/ui
     <div style="max-height:80vh;">
         <div class="gs-bundle-of-buttons" style="max-height:10vh;">
             {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-                <v-btn @click="addNewRow" small color="primary" :disabled="!userRoles.includes('{{contexts.actors.postActor.name}}')">
+                <v-btn @click="addNewRow" small color="primary" :disabled="!hasRole">
                     <v-icon small>mdi-plus-circle-outline</v-icon>등록
                 </v-btn>
-                <v-btn  @click="editSelectedRow" small color="primary" :disabled="!userRoles.includes('{{contexts.actors.putActor.name}}')">
+                <v-btn  @click="editSelectedRow" small color="primary" :disabled="!hasRole">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
-                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!userRoles.includes('{{contexts.actors.deleteActor.name}}')">
+                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole">
                     <v-icon small>mdi-minus-circle-outline</v-icon>삭제
                 </v-btn>
             {{else}}
@@ -150,7 +150,13 @@ export default {
     },
     data: () => ({
         path: '{{namePlural}}',
+        hasRole: false,
     }),
+    computed:{
+        hasRole(){
+            return this.userRoles.includes('{{contexts.actors.deleteActor.name}}')
+        }
+    },
     methods:{
     }
 }
