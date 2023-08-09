@@ -7,6 +7,7 @@ path: frontend-wijmo/src/components/base-ui
 
 <script>
 import BaseEntity from './BaseEntity.vue';
+import BaseSecurity from './BaseSecurity.vue';
 
 import '@grapecity/wijmo.touch';
 import '@grapecity/wijmo.vue2.grid';
@@ -39,7 +40,8 @@ export default {
         {{/if}}
     }),
     mixins:[
-        BaseEntity
+        BaseEntity,
+        BaseSecurity
     ],
     computed: {
     },
