@@ -168,10 +168,11 @@ fileName: App.vue
 </template>
 
 <script>
+import BaseGrid from './components/base-ui/BaseGrid'
 
 export default {
     name: "App",
-
+    mixins:[BaseGrid],
     data: () => ({
         useComponent: "",
         drawer: true,
@@ -198,6 +199,12 @@ export default {
       }
       {{else}}
       {{/if}}
+    },
+
+    computed: {
+        username(){
+            return this.getUserName();
+        }
     },
 
     mounted() {
