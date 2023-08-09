@@ -74,7 +74,6 @@ Vue.prototype.$ManagerLists.forEach(function(item, idx) {
   })
 })
 
-{{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
 let initOptions = {
   url: `http://localhost:9090/`,
   realm: `master`,
@@ -112,6 +111,13 @@ function init() {
   
     window.setTimeout(refreshToken.bind(null, keycloak), ONE_MINUTE);
   }).catch(() => {
+    
+    new Vue({
+      vuetify,
+      router,
+      render: h => h(App)
+    }).$mount("#app");
+
     console.error(`Auth Fail`);
   })
 }
@@ -138,14 +144,6 @@ function warnRefresh() {
 function errorRefresh() {
   console.error('Failed to refresh token');
 }
-{{else}}
-new Vue({
-  vuetify,
-  router,
-  render: h => h(App)
-}).$mount("#app");
-{{/if}}
 
 <function>
-
 </function>
