@@ -177,10 +177,6 @@ export default {
         components: [],
         sideBar: true,
         urlPath: null,
-        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-        username: '',
-        {{else}}
-        {{/if}}
     }),
     
     async created() {
