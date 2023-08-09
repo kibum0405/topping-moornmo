@@ -175,9 +175,9 @@ export default {
 var me = this;
 
 if (me && me.attached) {
-    var postCmd = me.attached.find(ele => ele._type.includes("Command") && (ele.controllerInfo.method=="POST" || ele.restRepositoryInfo.method=="POST"));
-    var putCmd = me.attached.find(ele => ele._type.includes("Command") && (ele.controllerInfo.method=="PUT" || ele.restRepositoryInfo.method=="PUT"));
-    var deleteCmd = me.attached.find(ele => ele._type.includes("Command") (ele.controllerInfo.method=="DELETE" || ele.restRepositoryInfo.method=="DELETE"));
+    var postCmd = me.attached.find(ele => ele._type.includes("Command") && (ele.isExtendedVerb==true && ele.controllerInfo.method=="POST") || (ele.isRestRepository==true && ele.restRepositoryInfo.method=="POST"));
+    var putCmd = me.attached.find(ele => ele._type.includes("Command") && (ele.isExtendedVerb==true && ele.controllerInfo.method=="PUT") || (ele.isRestRepository==true && ele.restRepositoryInfo.method=="PUT"));
+    var deleteCmd = me.attached.find(ele => ele._type.includes("Command") && (ele.isExtendedVerb==true && ele.controllerInfo.method=="DELETE") || (ele.isRestRepository==true && ele.restRepositoryInfo.method=="DELETE"));
 
     me.contexts.actors = {};
 
