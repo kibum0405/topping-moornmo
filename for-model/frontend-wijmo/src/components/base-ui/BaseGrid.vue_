@@ -51,10 +51,12 @@ export default {
 
         this.dataService = new DataService();
         this.exportService = new ExportService();
-        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-        this.getUserRole();
-        {{/if}}
     }, 
+    {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
+    mounted: function () {
+        this.getUserRole();
+    },
+    {{/if}}
     beforeDestroy() {
         this.exportService.cancelExcelExport();
     },
