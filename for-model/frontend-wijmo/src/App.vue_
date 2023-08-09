@@ -33,7 +33,6 @@ fileName: App.vue
                     ></span> 
                 <v-spacer></v-spacer>
 
-                {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
                 <b style="margin-left:10px">\{{username}} 님</b>
                 <v-btn
                     text
@@ -42,8 +41,6 @@ fileName: App.vue
                 >
                     Logout
                 </v-btn>
-                {{else}}
-                {{/if}}
             </v-app-bar>
 
             <v-navigation-drawer app clipped flat v-model="sideBar">
