@@ -28,9 +28,10 @@ path: frontend-wijmo/src/components/ui
             {{/if}}
             <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
         </div>
-        {{#contexts.views}}
+        {{#attached 'View' this}}
         <{{namePascalCase}} @search="search"></{{namePascalCase}}>
-        {{/contexts.views}}
+        {{/attached}}
+
 
         <!-- the grid -->
         <wj-flex-grid
@@ -133,9 +134,9 @@ path: frontend-wijmo/src/components/ui
 </template>
 
 <script>
-{{#contexts.views}}
+{{#attached 'View' this}}
 import {{namePascalCase}} from '../{{namePascalCase}}.vue';
-{{/contexts.views}}
+{{/attached}}
 import {{namePascalCase}} from '../{{namePascalCase}}.vue'
 import BaseGrid from '../base-ui/BaseGrid'
 
@@ -143,9 +144,9 @@ export default {
     name: '{{nameCamelCase}}Grid',
     mixins:[BaseGrid],
     components:{
-    {{#contexts.views}}
+    {{#attached 'View' this}}
         {{namePascalCase}},
-    {{/contexts.views}}
+    {{/attached}}
         {{namePascalCase}},
     },
     data: () => ({
