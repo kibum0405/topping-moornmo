@@ -41,6 +41,9 @@ export default {
         BaseSecurity
     ],
     computed: {
+        username(){
+            return this.getUserName();
+        }
     },
     async created(){
         
