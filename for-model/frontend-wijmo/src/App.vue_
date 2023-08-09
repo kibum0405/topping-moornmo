@@ -52,7 +52,7 @@ fileName: App.vue
                     <v-list-group>
                         <template v-slot:activator>
                             <v-list-item-content>
-                                <v-list-item-title>{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</v-list-item-title>
+                                <v-list-item-title>{{#aggregates}}{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}{{/aggregates}}</v-list-item-title>
                             </v-list-item-content>
                         </template>
 
