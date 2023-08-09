@@ -28,9 +28,10 @@ path: frontend-wijmo/src/components/ui
             {{/if}}
             <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
         </div>
-        {{#contexts.views}}
+        {{#attached 'View' this}}
         <{{namePascalCase}} @search="search"></{{namePascalCase}}>
-        {{/contexts.views}}
+        {{/attached}}
+
 
         <!-- the grid -->
         <wj-flex-grid
