@@ -52,7 +52,7 @@ fileName: App.vue
                     <v-list-group>
                         <template v-slot:activator>
                             <v-list-item-content>
-                                <v-list-item-title>{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</v-list-item-title>
+                                <v-list-item-title>{{#aggregates}}{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}{{/aggregates}}</v-list-item-title>
                             </v-list-item-content>
                         </template>
 
@@ -124,7 +124,7 @@ fileName: App.vue
                                             {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
                                         </v-btn>
                                     </template>
-                                    <span>{{namePascalCase}}</span>
+                                    <span>{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</span>
                                 </v-tooltip>
                             </v-card-actions>
                         </v-card>
@@ -235,6 +235,13 @@ export default {
 </style>
 
 <function>
+window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
+    if(displayName){
+        return displayName;
+    }else{
+        return name;
+    }
+})
 window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
     try{
         var isSelectedSecurity = false
