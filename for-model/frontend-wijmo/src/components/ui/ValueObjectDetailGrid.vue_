@@ -28,18 +28,8 @@ path: frontend-wijmo/src/components/ui
             {{/if}}
             {{/fieldDescriptors}}
         </wj-flex-grid>
-
-        <{{namePascalCase}} v-if="editMode"
-            :offline="offline"
-            :isNew="!itemToEdit"
-            :editMode="editMode"
-            inList
-            v-model="itemToEdit"
-            @add="append"
-        >
-            <slot name="actions"></slot>
-        </{{namePascalCase}}>
         <v-btn v-if="editMode" @click="append()">추가</v-btn>
+        <v-btn v-if="editMode" @click="detailDeleteRow()">삭제</v-btn>
     </div>
 </template>
 

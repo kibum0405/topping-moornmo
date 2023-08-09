@@ -121,7 +121,7 @@ fileName: App.vue
                                             @click="changeUrl()"
                                             style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                                         >
-                                            {{namePascalCase}}
+                                            {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
                                         </v-btn>
                                     </template>
                                     <span>{{namePascalCase}}</span>
@@ -155,7 +155,7 @@ fileName: App.vue
                                     @click="changeUrl()"
                                     style="font-weight:500; font-size:20px; padding:15px;"
                                 >
-                                    {{namePascalCase}}
+                                    {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
                                 </v-btn>
                             </v-card-actions>
                         </v-card>
