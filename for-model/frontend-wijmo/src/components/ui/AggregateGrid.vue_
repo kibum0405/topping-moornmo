@@ -5,27 +5,15 @@ path: frontend-wijmo/src/components/ui
 <template>
     <div style="max-height:80vh;">
         <div class="gs-bundle-of-buttons" style="max-height:10vh;">
-            {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-                <v-btn @click="addNewRow" small color="primary" :disabled="!hasRole.postActor">
+                <v-btn @click="addNewRow" small color="primary" :disabled="!hasRole('{{contexts.actors.postActor.name}}')">
                     <v-icon small>mdi-plus-circle-outline</v-icon>등록
                 </v-btn>
-                <v-btn  @click="editSelectedRow" small color="primary" :disabled="!hasRole.putActor">
+                <v-btn  @click="editSelectedRow" small color="primary" :disabled="!hasRole('{{contexts.actors.putActor.name}}')">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
-                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole.deleteActor">
+                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>삭제
                 </v-btn>
-            {{else}}
-                <v-btn @click="addNewRow" small color="primary">
-                    <v-icon small>mdi-plus-circle-outline</v-icon>등록
-                </v-btn>
-                <v-btn  @click="editSelectedRow" small color="primary">
-                    <v-icon small>mdi-pencil</v-icon>수정
-                </v-btn>
-                <v-btn @click="deleteSelectedRows" small color="primary">
-                    <v-icon small>mdi-minus-circle-outline</v-icon>삭제
-                </v-btn>
-            {{/if}}
             <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
         </div>
         {{#attached 'View' this}}
@@ -151,22 +139,7 @@ export default {
     },
     data: () => ({
         path: '{{namePlural}}',
-        hasRole: {
-            postActor: false,
-            putActor: false,
-            deleteActor: false
-        },
     }),
-    computed:{
-        hasRole(){
-            var obj = {
-                postActor: this.userRoles.includes('{{contexts.actors.postActor.name}}'),
-                putActor: this.userRoles.includes('{{contexts.actors.putActor.name}}'),
-                deleteActor: this.userRoles.includes('{{contexts.actors.deleteActor.name}}')
-            }
-            return obj;
-        }
-    },
     methods:{
     }
 }
