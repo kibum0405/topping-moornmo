@@ -222,19 +222,7 @@ export default {
         },
         goHome() {
             this.urlPath = null;
-        },
-        {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-        logout(){
-            //const keycloak = new Keycloak();
-
-            //keycloak.logout;
-            if(confirm("로그아웃 하시겠습니까?")){
-                localStorage.clear()
-                location.href = 'http://localhost:9090/realms/master/protocol/openid-connect/logout'
-            }
-        },
-        {{else}}
-        {{/if}}
+        }
     }
 };
 </script>
@@ -249,18 +237,4 @@ window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
         return name;
     }
 })
-window.$HandleBars.registerHelper('isSelectedSecurity', function (selectedSecurity) {
-    try{
-        var isSelectedSecurity = false
-        for(var i=0; i<selectedSecurity.length; i++){
-            if(selectedSecurity[i] == 'keycloak-security'){
-                isSelectedSecurity =  true;
-            }
-        }
-
-        return isSelectedSecurity;
-    } catch(e){
-        console.log(e)
-    }
-});
 </function>
