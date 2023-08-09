@@ -78,6 +78,7 @@ let initOptions = {
   onLoad: `login-required`,
 };
 
+
 let keycloak = new Keycloak(initOptions);
 
 init();
@@ -141,6 +142,3 @@ function warnRefresh() {
 function errorRefresh() {
   console.error('Failed to refresh token');
 }
-
-<function>
-</function>
