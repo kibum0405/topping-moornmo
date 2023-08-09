@@ -27,6 +27,15 @@ export default {
                 return 'Guest'
             }
         },
+        logout(){
+            //const keycloak = new Keycloak();
+
+            //keycloak.logout;
+            if(confirm("로그아웃 하시겠습니까?")){
+                localStorage.clear()
+                location.href = 'http://localhost:9090/realms/master/protocol/openid-connect/logout'
+            }
+        },
     },
 };
 </script>
