@@ -186,17 +186,6 @@ export default {
     async created() {
       var path = document.location.href.split("#/")
       this.urlPath = path[1];
-
-      {{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
-
-      var me = this
-      me.username = me.$OAuth.idTokenParsed.preferred_username
-
-      if(!me.username){
-          location.reload()
-      }
-      {{else}}
-      {{/if}}
     },
 
     computed: {
