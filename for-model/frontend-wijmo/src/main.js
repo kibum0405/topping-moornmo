@@ -5,10 +5,7 @@ import vuetify from "./plugins/vuetify";
 import Managing from "./components";
 import router from './router';
 import ExcelExportButton from "./components/base-ui/export-btn.vue";
-{{#if (isSelectedSecurity options.rootModel.toppingPlatforms)}}
 import Keycloak from 'keycloak-js'
-{{else}}
-{{/if}}
 Vue.config.productionTip = false;
 Vue.component("excel-export-button", ExcelExportButton);
 Vue.prototype.$Vue = Vue;
