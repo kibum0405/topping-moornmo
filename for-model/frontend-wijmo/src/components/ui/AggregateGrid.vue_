@@ -16,13 +16,6 @@ path: frontend-wijmo/src/components/ui
                 <v-btn {{#if fieldDescriptors}}@click="open{{namePascalCase}}"{{else}}@click="{{nameCamelCase}}"{{/if}} small color="primary" {{#if (attachedActorName actorName)}}:disabled="!hasRole('{{actorName}}')"{{/if}}>
                     <v-con small>mdi-minus-circle-outline</<v-icon>{{#ifNotNull displayName name}}{{/ifNotNull}}
                 </v-btn>
-                {{/if}}
-                {{/attached}}
-                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
-                    <v-icon small>mdi-minus-circle-outline</v-icon>삭제
-                </v-btn>
-                {{#attached 'Command' this}}
-                {{#if isExtendedVerb}}
                 {{#if fieldDescriptors}}
                 <v-dialog v-model="{{nameCamelCase}}Diagram" width="500">
                     <{{namePascalCase}}Command
@@ -33,6 +26,9 @@ path: frontend-wijmo/src/components/ui
                 {{/if}}
                 {{/if}}
                 {{/attached}}
+                <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
+                    <v-icon small>mdi-minus-circle-outline</v-icon>삭제
+                </v-btn>
             <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
         </div>
         {{#attached 'View' this}}
