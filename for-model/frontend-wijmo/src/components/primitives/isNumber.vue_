@@ -27,6 +27,7 @@ path: frontend-wijmo/src/components/primitives
                 default: 0
             },
             editMode: Boolean,
+            label: String,
         },
         methods:{
             change(){
