@@ -13,7 +13,7 @@ path: frontend-wijmo/src/components/ui
                 </v-btn>
                 {{#attached 'Command' this}}
                 {{#if isExtendedVerb}}
-                <v-btn {{#if fieldDescriptors}}@click="open{{namePascalCase}}"{{else}}@click="{{nameCamelCase}}"{{/if}} small color="primary" {{#if (attachedActorName actorName)}}:disabled="!hasRole('{{contexts.actors.postActor.name}}')"{{/if}}>
+                <v-btn {{#if fieldDescriptors}}@click="open{{namePascalCase}}"{{else}}@click="{{nameCamelCase}}"{{/if}} small color="primary" {{#if (attachedActorName actorName)}}:disabled="!hasRole('{{actorName}}')"{{/if}}>
                     <v-con small>mdi-minus-circle-outline</<v-icon>{{#ifNotNull displayName name}}{{/ifNotNull}}
                 </v-btn>
                 {{/if}}
