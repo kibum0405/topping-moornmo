@@ -219,4 +219,15 @@ window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
 window.$HandleBars.registerHelper('isNotId', function (className) {
     return (className != 'id')
 })
+window.$HandleBars.registerHelper('attachedActorName', function (actorName, options) {
+    try {
+        if(actorName) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch(e) {
+        console.log(e)
+    }
+})
 </function>
