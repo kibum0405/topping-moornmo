@@ -11,7 +11,7 @@ fileName: App.vue
                 :timeout="snackbar.timeout"
                 :color="snackbar.color"
             >
-                {{ snackbar.text }}
+                \{{ snackbar.text }}
                 <v-btn dark text @click="snackbar.status = false">
                     Close
                 </v-btn>
