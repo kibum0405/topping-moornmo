@@ -185,7 +185,7 @@ export default {
     data: () => ({
         useComponent: "",
         drawer: true,
-        components: [],
+        components: {},
         sideBar: true,
         urlPath: null,
         snackbar: {
