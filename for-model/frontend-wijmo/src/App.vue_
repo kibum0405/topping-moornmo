@@ -178,6 +178,7 @@ fileName: App.vue
 
 <script>
 import BaseGrid from './components/base-ui/BaseGrid'
+import Vue from 'vue'
 
 export default {
     name: "App",
