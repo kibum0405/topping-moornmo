@@ -1,6 +1,6 @@
 forEach: View
 fileName: {{namePascalCase}}Chart.vue
-path: frontend/src/components
+path: frontend-wijmo/src/components
 ---
 <template>
     <div>
