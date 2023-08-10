@@ -24,8 +24,8 @@ path: frontend-wijmo/src/components/ui
                     ></{{namePascalCase}}Command>
                 </v-dialog>
                 {{/if}}
-                {{/commands}}
                 {{/isRestRepository}}
+                {{/commands}}
                 <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>삭제
                 </v-btn>
