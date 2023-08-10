@@ -11,9 +11,28 @@ path: frontend-wijmo/src/components/ui
                 <v-btn  @click="editSelectedRow" small color="primary" :disabled="!hasRole('{{contexts.actors.putActor.name}}')">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
+                {{#attached 'Command' this}}
+                {{#if isExtendedVerb}}
+                <v-btn {{#if fieldDescriptors}}@click="open{{namePascalCase}}"{{else}}@click="{{nameCamelCase}}"{{/if}} small color="primary" :disabled="!hasRole('{{contexts.actors.postActor.name}}')">
+                    <v-con small>mdi-minus-circle-outline</<v-icon>{{#ifNotNull displayName name}}{{/ifNotNull}}
+                </v-btn>
+                {{/if}}
+                {{/attached}}
                 <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>삭제
                 </v-btn>
+                {{#attached 'Command' this}}
+                {{#if isExtendedVerb}}
+                {{#if fieldDescriptors}}
+                <v-dialog v-model="{{nameCamelCase}}Diagram" width="500">
+                    <{{namePascalCase}}Command
+                        @closeDialog="close{{namePascalCase}}"
+                        @{{nameCamelCase}}="{{nameCamelCase}}"
+                    ></{{namePascalCase}}Command>
+                </v-dialog>
+                {{/if}}
+                {{/if}}
+                {{/attached}}
             <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
         </div>
         {{#attached 'View' this}}
@@ -141,6 +160,18 @@ export default {
         path: '{{namePlural}}',
     }),
     methods:{
+        {{#attached 'Command' this}}
+        {{#if isExtendedVerb}}
+            {{nameCamelCase}}({{#if fieldDescriptors}}params{{/if}}){
+                try{
+                    this.repository.invoke(this.getSelectedItem(), "{{nameCamelCase}}", {{#if fieldDescriptors}}params{{else}}null{{/if}})
+                    this.$mainApp.success("{{#ifNotNull displayname name}}{{/ifNotNull}} 성공적으로 처리되었습니다.")
+                }catch(e){
+                    this.$mainApp.reportError(e)
+                }
+            }
+        {{/if}}
+        {{/attached}}
     }
 }
 </script>
