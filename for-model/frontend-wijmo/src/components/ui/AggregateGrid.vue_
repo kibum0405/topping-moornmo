@@ -162,14 +162,14 @@ export default {
     methods:{
         {{#attached 'Command' this}}
         {{#if isExtendedVerb}}
-            {{nameCamelCase}}({{#if fieldDescriptors}}params{{/if}}){
-                try{
-                    this.repository.invoke(this.getSelectedItem(), "{{nameCamelCase}}", {{#if fieldDescriptors}}params{{else}}null{{/if}})
-                    this.$mainApp.success("{{#ifNotNull displayname name}}{{/ifNotNull}} 성공적으로 처리되었습니다.")
-                }catch(e){
-                    this.$mainApp.reportError(e)
-                }
+        {{nameCamelCase}}({{#if fieldDescriptors}}params{{/if}}){
+            try{
+                this.repository.invoke(this.getSelectedItem(), "{{nameCamelCase}}", {{#if fieldDescriptors}}params{{else}}null{{/if}})
+                this.$mainApp.success("{{#ifNotNull displayname name}}{{/ifNotNull}} 성공적으로 처리되었습니다.")
+            }catch(e){
+                this.$mainApp.reportError(e)
             }
+        },
         {{/if}}
         {{/attached}}
     }
