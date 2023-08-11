@@ -165,6 +165,7 @@ export default {
         },
         append() {
             this.tick = false;
+            this.openDialog = false
 
             if (!this.value) {
                 this.value = [];
@@ -211,6 +212,13 @@ export default {
 
             return me.value;
         },
+        edit(){
+            this.value = []
+            this.itemToEdit = null
+            this.openDialog = false;
+            this.value = this.search(null)
+            
+        }
     },
     filters: {
         safeCurrency: function (value) {
