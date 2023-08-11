@@ -98,7 +98,7 @@ path: frontend-wijmo/src/components/ui
                             <v-icon
                                 color="white"
                                 small
-                                @click="openDialog = false"
+                                @click="closeDialog()"
                             >mdi-close</v-icon>
                         </v-toolbar>
                         <v-card-text>
@@ -107,6 +107,7 @@ path: frontend-wijmo/src/components/ui
                                 :editMode="true"
                                 v-model="itemToEdit"
                                 @add="append"
+                                @edit="edit"
                             />
                         </v-card-text>
                     </v-card>
