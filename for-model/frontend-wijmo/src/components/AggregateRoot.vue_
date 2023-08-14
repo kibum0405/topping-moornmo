@@ -10,7 +10,6 @@ path: frontend-wijmo/src/components
         <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         <{{getPrimitiveType className}} label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
         {{else}}
-         <div class="label-title" style="color: black;">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         {{/if}}
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
@@ -19,6 +18,7 @@ path: frontend-wijmo/src/components
         {{#if (isPrimitive className)}}
         {{else}}
         {{#checkEntityMember className}}
+        <div class="label-title" style="color: black">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         <{{className}} offline label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
         {{/checkEntityMember}}
         {{/if}}
