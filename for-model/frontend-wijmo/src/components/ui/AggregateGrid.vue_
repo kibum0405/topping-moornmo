@@ -162,11 +162,11 @@ export default {
             handler:function(){
                 if(!this.newValue){
                     this.newValue = {
-                        {{#aggregateRoot.fieldDescriptors}}
-                        {{#if (isNotId nameCamelCase)}}
-                            '{{nameCamelCase}}': {{#setDefaultValue className isVO}}{{/setDefaultValue}},
-                        {{/if}}
-                        {{/aggregateRoot.fieldDescriptors}}
+                    {{#aggregateRoot.fieldDescriptors}}
+                    {{#if (isNotId nameCamelCase)}}
+                        '{{nameCamelCase}}': {{#setDefaultValue className isVO}}{{/setDefaultValue}},
+                    {{/if}}
+                    {{/aggregateRoot.fieldDescriptors}}
                     }
                 }
             }
