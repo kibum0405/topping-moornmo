@@ -105,7 +105,7 @@ path: frontend-wijmo/src/components/ui
                             <{{namePascalCase}} :offline="offline"
                                 :isNew="!itemToEdit"
                                 :editMode="true"
-                                v-model="itemToEdit"
+                                v-model="newValue"
                                 @add="append"
                                 @edit="edit"
                             />

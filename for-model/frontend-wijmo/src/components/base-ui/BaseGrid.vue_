@@ -27,7 +27,7 @@ export default {
         flex: null,
         tick : true,
         openDialog : false,
-        itemToEdit: {},
+        itemToEdit: null,
         selectedRow: null,
         path: 'path',
         repository: null,
