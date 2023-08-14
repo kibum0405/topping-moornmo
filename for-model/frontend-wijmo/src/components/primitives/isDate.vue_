@@ -27,6 +27,7 @@ path: frontend-wijmo/src/components/primitives
                         v-model="date"
                         no-title
                         scrollable
+                        :label="label"
                 >
                     <v-spacer></v-spacer>
                     <v-btn text color="primary" @click="menu = false">
@@ -39,7 +40,7 @@ path: frontend-wijmo/src/components/primitives
             </v-menu>
         </div>
         <div v-else>
-            \{{label}} :  \{{value}}
+            {{label}} :  {{value}}
         </div>
     </div>
 </template>
@@ -52,6 +53,7 @@ path: frontend-wijmo/src/components/primitives
         props: {
             value: Object,
             editMode: Boolean,
+            label: String
         },
         data: () => ({
             menu: false,
@@ -63,8 +65,12 @@ path: frontend-wijmo/src/components/primitives
             }
         },
         watch: {
-            value() {
-                this.change();
+            // value() {
+            //     this.change();
+            // },
+            date(){
+                this.value = this.date
+                this.change()
             }
         },
         methods:{
