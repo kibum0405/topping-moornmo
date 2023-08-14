@@ -4,14 +4,11 @@ path: frontend-wijmo/src/components
 ---
 <template>
     <div style="margin: 0 -15px 0 -15px;">
-        <v-card-title>
-            {{pascalCase name}}
-        </v-card-title>
         <v-card-text>
             <div v-if="editMode" style="margin-top:-20px;">
                 <v-select
                     v-model="newValue"
-                    :label="'{{pascalCase name}}'"
+                    :label="label"
                     :items="{{camelCase name}}List"
                 ></v-select>
             </div>
@@ -29,7 +26,9 @@ export default {
     name: '{{pascalCase name}}',
     mixins:[BaseEntity],
     components:{},
-    props: {},
+    props: {
+        label: String
+    },
     data: () => ({
         {{camelCase name}}List : [{{#items}} "{{value}}", {{/items}}],
         newValue: '',
