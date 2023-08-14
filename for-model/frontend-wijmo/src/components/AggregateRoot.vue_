@@ -26,6 +26,7 @@ path: frontend-wijmo/src/components
         {{/aggregateRoot.fieldDescriptors}}
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
+        <div class="label-title" style="color: black">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         <{{namePascalCase}}DetailGrid offline v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
