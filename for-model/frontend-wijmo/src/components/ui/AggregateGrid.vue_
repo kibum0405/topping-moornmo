@@ -17,9 +17,9 @@ path: frontend-wijmo/src/components/ui
                     <v-icon small>mdi-minus-circle-outline</v-icon>{{#ifNotNull displayName name}}{{/ifNotNull}}
                 </v-btn>
                 {{#if fieldDescriptors}}
-                <v-dialog v-model="{{nameCamelCase}}Diagram" width="500">
+                <v-dialog v-model="{{nameCamelCase}}Dialog = true" width="500">
                     <{{namePascalCase}}Command
-                        @closeDialog="close{{namePascalCase}}"
+                        @closeDialog="{{namePascalCase}}Dialog = false"
                         @{{nameCamelCase}}="{{nameCamelCase}}"
                     ></{{namePascalCase}}Command>
                 </v-dialog>
@@ -155,6 +155,13 @@ export default {
     },
     data: () => ({
         path: '{{namePlural}}',
+        {{#commands}}
+        {{^isRestRepository}}
+        {{#if fieldDescriptors}}
+        {{namePascalCase}}Dialog = false,
+        {{/if}}
+        {{/isRestRepository}}
+        {{/commands}}
     }),
     watch: {
         newValue: {
