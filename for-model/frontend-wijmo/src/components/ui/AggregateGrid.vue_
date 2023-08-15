@@ -19,7 +19,7 @@ path: frontend-wijmo/src/components/ui
                 {{#if fieldDescriptors}}
                 <v-dialog v-model="{{nameCamelCase}}Dialog = true" width="500">
                     <{{namePascalCase}}Command
-                        @closeDialog="{{namePascalCase}}Dialog = false"
+                        @closeDialog="{{nameCamelCase}}Dialog = false"
                         @{{nameCamelCase}}="{{nameCamelCase}}"
                     ></{{namePascalCase}}Command>
                 </v-dialog>
