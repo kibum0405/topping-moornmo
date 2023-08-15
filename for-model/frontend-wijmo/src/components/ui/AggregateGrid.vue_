@@ -158,7 +158,7 @@ export default {
         {{#commands}}
         {{^isRestRepository}}
         {{#if fieldDescriptors}}
-        {{nameCamelCase}}Dialog = false,
+        {{nameCamelCase}}Dialog: false,
         {{/if}}
         {{/isRestRepository}}
         {{/commands}}
