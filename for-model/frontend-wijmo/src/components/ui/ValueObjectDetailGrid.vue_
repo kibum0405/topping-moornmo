@@ -4,6 +4,7 @@ path: frontend-wijmo/src/components/ui
 ---
 <template>
     <div>
+        <div class="label-title">\{{label}}</div>
         <wj-flex-grid
             ref="flexGridDetails"
             :key="value.length"
@@ -55,6 +56,9 @@ export default {
     name: '{{namePascalCase}}sDetailGrid',
     mixins: [BaseDetailGrid],
     components: {
+    },
+    props: {
+        label: String,
     },
     methods: {
     }
