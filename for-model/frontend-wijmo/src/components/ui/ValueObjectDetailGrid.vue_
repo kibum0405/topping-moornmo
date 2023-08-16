@@ -28,7 +28,7 @@ path: frontend-wijmo/src/components/ui
             {{else}}
             <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center">
                 <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">
-                    <{{getPrimitiveType className}} label="입력하세요." v-model="cell.item.{{nameCamelCase}}" :editMode="editMode"/>
+                    <{{getPrimitiveType className}} v-model="cell.item.{{nameCamelCase}}" :editMode="editMode"/>
                 </wj-flex-grid-cell-template>
             </wj-flex-grid-column>
             {{/if}}

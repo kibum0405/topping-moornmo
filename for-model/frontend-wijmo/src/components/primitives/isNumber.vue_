@@ -13,7 +13,7 @@ path: frontend-wijmo/src/components/primitives
             />
         </div>
         <div v-else>
-            \{{label}} :  \{{value}}
+            \{{value}}
         </div>
     </div>
 </template>
