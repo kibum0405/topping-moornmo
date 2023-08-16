@@ -4,10 +4,11 @@ path: frontend-wijmo/src/components/primitives
 <template>
     <div>
         <div v-if="editMode" style="margin-top:-20px;">
+            <div class="label-title">{{label}}</div>
             <v-text-field
                 v-bind="$attrs"
                 type="number"
-                :label="label"
+                label="입력하세요."
                 v-model="value"
                 @change="change"
             />

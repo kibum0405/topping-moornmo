@@ -6,11 +6,12 @@ path: frontend-wijmo/src/components/primitives
 <template>
     <div>
         <div v-if="editMode">
+            <div class="label-title">{{label}}</div>
             <v-text-field 
                 v-bind="$attrs"
                 v-model="value"
                 @change="change"
-                :label="label"
+                label="입력하세요."
                 outlined
                 single-line
             />
