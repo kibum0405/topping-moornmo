@@ -219,9 +219,9 @@ export default {
             {{#boundedContexts}}
             { id: '{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}', title: '{{#aggregates}}{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}{{/aggregates}}',
                 items: [
-                    {{#viewes}}
+                    {{#aggregates}}
                     { key: '{{namePlural}}', url: '/{{namePlural}}', name: '{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}' },
-                    {{/viewes}}
+                    {{/aggregates}}
                 ]
             },
             {{/boundedContexts}}
