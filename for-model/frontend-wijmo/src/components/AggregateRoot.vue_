@@ -8,7 +8,7 @@ path: frontend-wijmo/src/components
         {{#if (isNotId nameCamelCase)}}
         {{#if (isPrimitive className)}}
         <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
-        <{{getPrimitiveType className}} label="입력하세요." v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
+        <{{getPrimitiveType className}} label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
         {{else}}
         {{/if}}
         {{/if}}
@@ -18,6 +18,7 @@ path: frontend-wijmo/src/components
         {{#if (isPrimitive className)}}
         {{else}}
         {{#checkEntityMember className}}
+        <div class="label-title" style="color: black">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         <{{className}} offline label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
         {{/checkEntityMember}}
         {{/if}}
@@ -25,6 +26,7 @@ path: frontend-wijmo/src/components
         {{/aggregateRoot.fieldDescriptors}}
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
+        <div class="label-title" style="color: black">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         <{{namePascalCase}}DetailGrid offline v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}

@@ -50,13 +50,11 @@ path: frontend-wijmo/src/components/ui
 
 <script>
 import BaseDetailGrid from '../base-ui/BaseDetailGrid';
-import {{namePascalCase}} from '../{{namePascalCase}}.vue';
 
 export default {
     name: '{{namePascalCase}}sDetailGrid',
     mixins: [BaseDetailGrid],
     components: {
-        {{namePascalCase}}
     },
     methods: {
     }

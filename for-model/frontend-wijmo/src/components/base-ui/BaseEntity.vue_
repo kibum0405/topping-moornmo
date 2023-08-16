@@ -85,7 +85,6 @@ path: frontend-wijmo/src/components/base-ui
                         this.$emit('edit', this.value);
                     }
 
-                    location.reload()
 
                 } catch(e) {
                     this.$mainApp.error(e)
@@ -111,7 +110,7 @@ path: frontend-wijmo/src/components/base-ui
             },
             closeDialog(){
                 this.openDialog = false
-                location.reload()
+                this.editMode = false
             },
 
         },
