@@ -74,45 +74,7 @@ fileName: App.vue
                         </div>
                     </div>
                 </div>
-
-
-            <!-- {{#boundedContexts}}
-                <v-list>
-                    <v-list-group>
-                        <template v-slot:activator>
-                            <v-list-item-content>
-                                <v-list-item-title>{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</v-list-item-title>
-                            </v-list-item-content>
-                        </template>
-
-                        {{#aggregates}}
-                        <v-list-item
-                            class="px-2"
-                            key="{{namePlural}}"
-                            to="/{{namePlural}}"
-                            @click="changeUrl()"
-                            style="font-weight:700;
-                            font-size:14px;"
-                        >
-                            {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
-                        </v-list-item>
-                        {{/aggregates}}
-                        {{#viewes}}
-                        <v-list-item
-                            class="px-2"
-                            key="{{namePlural}}"
-                            to="{{namePlural}}"
-                            @click="changeUrl()"
-                            style="font-weight:700;
-                            font-size:14px;"
-                        >
-                            {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}
-                        </v-list-item>
-                        {{/viewes}}
-                    </v-list-group>
-                </v-list>
-                {{/boundedContexts}}
-            </v-navigation-drawer> -->
+            </v-navigation-drawer>
         </div>
 
         <v-main>
