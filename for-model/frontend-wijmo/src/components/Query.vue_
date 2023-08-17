@@ -15,7 +15,6 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
                 {{#queryParameters}}
                 {{#if (isPrimitive className)}}
                 <v-col style="max-width:140px;">
-                    <div class="search-label">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
                     <{{getPrimitiveType className}} class="attributes-list" label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" v-model="value.parameters.{{nameCamelCase}}" :editMode="editMode"/>
                 </v-col>
                 {{else}}
