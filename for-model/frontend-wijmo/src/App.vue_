@@ -179,7 +179,7 @@ export default {
         },
         menus: [
             {{#boundedContexts}}
-            { id: '{{nameCamelCase}}', title: '{{#aggregates}}{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}{{/aggregates}}',
+            { id: '{{nameCamelCase}}', title: '{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}',
                 items: [
                     {{#aggregates}}
                     { key: '{{namePlural}}', url: '/{{namePlural}}', name: '{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}' },
