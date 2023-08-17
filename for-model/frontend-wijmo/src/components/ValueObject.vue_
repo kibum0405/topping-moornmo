@@ -7,7 +7,7 @@ path: frontend-wijmo/src/components
     <div>
         <BasePicker v-if="Editable" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/findBy{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#attached 'View' this}}{{namePascalCase}}{{/attached}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" searchParameterName="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" path="{{#toURL ../referenceClass}}{{/toURL}}" label="{{#ifNotNull displayName ../namePascalCase}}{{/ifNotNull}}" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else style="height:100%" @click="EditableClick">
-            <span>\{{ value.id ? (value.name ? value.name: value.id)}} : '{{referenceClass}}'  </span>
+            <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
     </div>
     {{/referenceClass}}
@@ -21,7 +21,6 @@ path: frontend-wijmo/src/components
         {{#fieldDescriptors}}
         {{#if (isNotId nameCamelCase)}}
         {{#if (isPrimitive className)}}
-            <div class="label-title">{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
             <{{getPrimitiveType className}} label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" v-model="value.{{nameCamelCase}}" :editMode="editMode"/>
         {{else}}
         {{#checkEntityMember className}}
