@@ -1,5 +1,5 @@
 forEach: ValueObject
-fileName: {{namePascalCase}}sDetailGrid.vue
+fileName: {{namePascalCase}}DetailGrid.vue
 path: frontend-wijmo/src/components/ui
 ---
 <template>
@@ -53,7 +53,7 @@ path: frontend-wijmo/src/components/ui
 import BaseDetailGrid from '../base-ui/BaseDetailGrid';
 
 export default {
-    name: '{{namePascalCase}}sDetailGrid',
+    name: '{{namePascalCase}}DetailGrid',
     mixins: [BaseDetailGrid],
     components: {
     },

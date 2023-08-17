@@ -3,12 +3,12 @@ path: frontend-wijmo/src/components/primitives
 ---
 <template>
     <div>
-        <div v-if="editMode" style="margin-top:-20px;">
+        <div v-if="editMode">
             <div class="label-title">\{{label}}</div>
             <v-text-field
                 v-bind="$attrs"
                 type="number"
-                label="입력하세요."
+                label="숫자를 입력하세요."
                 v-model="value"
                 @change="change"
             />
