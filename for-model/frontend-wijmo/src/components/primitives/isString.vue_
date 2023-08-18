@@ -43,7 +43,4 @@ path: frontend-wijmo/src/components/primitives
     }
 </script>
 <style>
-.v-text-field--outlined > .v-input__control > .v-input__slot{
-    min-height: 34px !important;
-}
 </style>
