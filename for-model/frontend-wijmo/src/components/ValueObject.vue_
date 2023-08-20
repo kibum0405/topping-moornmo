@@ -5,7 +5,7 @@ path: frontend-wijmo/src/components
 <template>
     {{#referenceClass}}
     <div>
-        <BasePicker v-if="Editable" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/findBy{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#attached 'BoundedContext' this}}{{#attached 'View' this}}{{#getEqualAggregate namePascalCase ../../../../../../referenceClass}}{{/getEqualAggregate}}{{/attached}}{{/attached}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" path="{{#toURL ../referenceClass}}{{/toURL}}" label="{{#ifNotNull displayName ../namePascalCase}}{{/ifNotNull}}" v-model="value" @selected="pick" :editMode="editMode" />
+        <BasePicker v-if="Editable" searchApiPath="{{#toURL ../referenceClass}}{{/toURL}}/search/findBy{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#attached 'BoundedContext' this}}{{#attached 'View' this}}{{#getAggName namePascalCase ../../../../../../referenceClass}}{{/getAggName}}{{/attached}}{{/attached}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" idField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#attached 'BoundedContext' this}}{{#aggregates}}{{#if (compareName name ../../../../../../referenceClass)}}{{#getKey aggregateRoot.fieldDescriptors}}{{/getKey}}{{/if}}{{/aggregates}}{{/attached}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" nameField="{{#../boundedContext.aggregates}}{{#outgoingRelations}}{{#target}}{{#attached 'BoundedContext' this}}{{#aggregates}}{{#if (compareName name ../../../../../../referenceClass)}}{{#getNameField aggregateRoot.fieldDescriptors}}{{/getNameField}}{{/if}}{{/aggregates}}{{/attached}}{{/target}}{{/outgoingRelations}}{{/../boundedContext.aggregates}}" path="{{#toURL ../referenceClass}}{{/toURL}}" label="{{#ifNotNull displayName ../namePascalCase}}{{/ifNotNull}}" v-model="value" @selected="pick" :editMode="editMode" />
         <div v-else style="height:100%" @click="EditableClick">
             <span>\{{ value && value.name ? value.name : '' }}</span>
         </div>
@@ -91,10 +91,22 @@ export default {
             me.contexts.views.push(view);
         }
     })
-    window.$HandleBars.registerHelper('getEqualAggregate', function (aggName, referenceName) {
+    window.$HandleBars.registerHelper('compareName', function (aggName, referenceName) {
+        if(aggName == referenceName){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    window.$HandleBars.registerHelper('getAggName', function (aggName, referenceName) {
         let filterAggName = String(aggName.replace("Query", ""));
         if(filterAggName == referenceName){
             return aggName
+        }
+    });
+    window.$HandleBars.registerHelper('compareName', function (aggName, referenceName) {
+        if(aggName == referenceName){
+            return true
         }
     });
     window.$HandleBars.registerHelper('getKey', function (fieldDescriptors) {
