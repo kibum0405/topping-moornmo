@@ -98,14 +98,6 @@ export default {
             }
         }
     });
-
-    window.$HandleBars.registerHelper('getEqualAggregate', function (aggName, referenceName) {
-        let filterAggName = aggName.replace("Query", "");
-        if("filterAggName" == "referenceName"){
-            return aggName
-        }
-    });
-
     window.$HandleBars.registerHelper('getNameField', function (fieldDescriptors) {
         for(var i = 0; i < fieldDescriptors.length; i ++ ){
             if(fieldDescriptors[i] && fieldDescriptors[i].isName == true){
