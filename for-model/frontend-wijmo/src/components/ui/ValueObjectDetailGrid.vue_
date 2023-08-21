@@ -36,7 +36,7 @@ path: frontend-wijmo/src/components/ui
             </wj-flex-grid-column>
             {{/if}}
             {{else}}
-            <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center">
+            <wj-flex-grid-column binding="{{nameCamelCase}}.name" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center">
                 <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">
                     <{{namePascalCase}} :editMode="editMode" v-model="cell.item.{{nameCamelCase}}"></{{namePascalCase}}>
                 </wj-flex-grid-cell-template>
@@ -110,10 +110,4 @@ export default {
             return false;
         }
     })
-    window.$HandleBars.registerHelper('getAggName', function (aggName, referenceName) {
-        let filterAggName = String(aggName.replace("Query", ""));
-        if(filterAggName == referenceName){
-            return aggName
-        }
-    });
 </function>
