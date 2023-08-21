@@ -121,7 +121,7 @@ export default {
                     }
                 }
             } catch(e) {
-                this.$mainApp.error(e)
+                this.$EventBus.$emit('show-error', e);
             }
         },
         groupPanelInitialized: function (ctl) {
