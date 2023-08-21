@@ -87,7 +87,7 @@ path: frontend-wijmo/src/components/base-ui
 
 
                 } catch(e) {
-                    this.$mainApp.error(e)
+                    this.$EventBus.$emit('show-error', e);
                 }
                 
             },
@@ -102,7 +102,7 @@ path: frontend-wijmo/src/components/base-ui
                     this.$emit('input', this.value);
                     this.$emit('delete', this.value);
                 } catch(e) {
-                    this.$mainApp.error(e)
+                    this.$EventBus.$emit('show-error', e);
                 }
             },
             change(){

@@ -332,7 +332,7 @@ path: frontend-wijmo/src/components
                     location.reload()
 
                 } catch(e) {
-                    this.$mainApp.error(e)
+                    this.$EventBus.$emit('show-error', e);
                 }
                 
             },
@@ -349,7 +349,7 @@ path: frontend-wijmo/src/components
                     this.$emit('delete', this.value);
 
                 } catch(e) {
-                    this.$mainApp.error(e)
+                    this.$EventBus.$emit('show-error', e);
                 }
             },
             {{#targetElement.operations}}
@@ -364,7 +364,7 @@ path: frontend-wijmo/src/components
 
                     this.editMode = false;
                 } catch(e) {
-                    this.$mainApp.error(e)
+                    this.$EventBus.$emit('show-error', e);
                 }
             },
             {{#if (checkParam fieldDescriptors)}}
@@ -389,7 +389,7 @@ path: frontend-wijmo/src/components
 
                     this.editMode = false;
                 } catch(e) {
-                    this.$mainApp.error(e)
+                    this.$EventBus.$emit('show-error', e);
                 }
             },
             {{#if (checkParam fieldDescriptors)}}
