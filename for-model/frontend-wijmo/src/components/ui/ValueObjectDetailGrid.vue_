@@ -110,4 +110,10 @@ export default {
             return false;
         }
     })
+    window.$HandleBars.registerHelper('getAggName', function (aggName, referenceName) {
+        let filterAggName = String(aggName.replace("Query", ""));
+        if(filterAggName == referenceName){
+            return aggName
+        }
+    });
 </function>

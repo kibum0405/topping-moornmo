@@ -3,12 +3,14 @@ fileName: {{pascalCase name}}.vue
 path: frontend-wijmo/src/components
 ---
 <template>
-    <div>
-        <div>\{{label}}</div>
+    <div style="margin: -10px -15px 0 -15px;">
+        <v-card-text>
+        <div class="label-title">{{label}}</div>
         <div v-if="editMode">
-            <v-select v-model="newValue"
-                label="선택하세요."
-                :items="{{camelCase name}}List"
+            <v-select
+                v-model="newValue"
+                :label="label"
+                :items="salestypeList"
                 solo
             ></v-select>
         </div>
