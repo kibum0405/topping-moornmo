@@ -5,18 +5,19 @@ path: frontend-wijmo/src/components
 <template>
     <div style="margin: -10px -15px 0 -15px;">
         <v-card-text>
-        <div class="label-title">{{label}}</div>
-        <div v-if="editMode">
-            <v-select
-                v-model="newValue"
-                :label="label"
-                :items="salestypeList"
-                solo
-            ></v-select>
-        </div>
-        <div v-else>
-            {{pascalCase name}} : \{{ value }}
-        </div>
+            <div class="label-title">{{label}}</div>
+            <div v-if="editMode">
+                <v-select
+                    v-model="newValue"
+                    :label="label"
+                    :items="salestypeList"
+                    solo
+                ></v-select>
+            </div>
+            <div v-else>
+                {{pascalCase name}} : \{{ value }}
+            </div>
+        </v-card-text>
     </div>
 </template>
 
