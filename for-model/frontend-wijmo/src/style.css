@@ -125,3 +125,9 @@
 .save-btn {
     width:64px;
 }
+
+
+/* 전역 background-color */
+.v-application {
+    background-color: {{options.rootModel.uiStyle.palette.colors.info.colorCode}} !important;
+}
