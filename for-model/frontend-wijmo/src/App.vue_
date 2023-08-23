@@ -81,7 +81,7 @@ fileName: App.vue
                     >
                         <v-list-item>
                             <v-list-item-avatar class="mx-auto" size="80" style="margin-top:80px;">
-                                <span class="mdi mdi-apps" style="font-size:60px;"></span>
+                                <span class="mdi mdi-apps primary-color" style="font-size:60px;"></span>
                             </v-list-item-avatar>
                         </v-list-item>
                         
