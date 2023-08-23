@@ -129,5 +129,34 @@
 
 /* 전역 background-color */
 .v-application {
-    background-color: {{options.rootModel.uiStyle.palette.colors.info.colorCode}} !important;
+    background-color: {{options.rootModel.uiStyle.palette.colors.background.colorCode}} !important;
+}
+
+/* 오토 모델링으로 생성된 class를 이용한 color 색상 적용 */
+.surface-color {
+    color: {{options.rootModel.uiStyle.palette.colors.surface.colorCode}}
+}
+
+.main-text-color {
+    color: {{options.rootModel.uiStyle.palette.colors.mainText.colorCode}}
+}
+
+.secondary-text-color {
+    color: {{options.rootModel.uiStyle.palette.colors.secondaryText.colorCode}}
+}
+
+.primary-color {
+    color: {{options.rootModel.uiStyle.palette.colors.primary.colorCode}}
+}
+
+.primary-darken-1-color {
+    color: {{options.rootModel.uiStyle.palette.colors.primary-darken-1.colorCode}}
+}
+
+.secondary-color {
+    color: {{options.rootModel.uiStyle.palette.colors.secondary.colorCode}}
+}
+
+.secondary-darken-1-color {
+    color: {{options.rootModel.uiStyle.palette.colors.secondary-darken-1.colorCode}}
 }
