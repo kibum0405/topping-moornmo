@@ -14,7 +14,7 @@ except: {{contexts.isNotCard}}
             
             {{#if (useSubtitle card)}}
             <v-card-subtitle>
-                {{\ item.{{card.subtitle}} }}
+                \{{ item.{{card.subtitle}} }}
             </v-card-subtitle>
             {{/if}}
 
