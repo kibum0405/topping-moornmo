@@ -17,11 +17,11 @@ Vue.use(Router);
 import {{namePascalCase}}Manager from "./components/ui/{{namePascalCase}}Grid"
     {{/aggregates}}
 
-    {{#viewes}}
+    {{#views}}
         {{#ifEquals dataProjection "cqrs"}}
 import {{namePascalCase}}View from "./components/{{namePascalCase}}View"
         {{/ifEquals}}
-    {{/viewes}}
+    {{/views}}
 {{/boundedContexts}}
 
 export default new Router({
@@ -37,7 +37,7 @@ export default new Router({
             },
         {{/aggregates}}
 
-        {{#viewes}}
+        {{#views}}
         {{#ifEquals dataProjection "cqrs"}}
 
             {
@@ -46,7 +46,7 @@ export default new Router({
                 component: {{namePascalCase}}View
             },
         {{/ifEquals}}
-        {{/viewes}}
+        {{/views}}
        {{/boundedContexts}}
 
 
