@@ -6,7 +6,7 @@ fileName: App.vue
             <Snackbar/>
             <v-app-bar app clipped-left flat class="contrast-primary-text">
                 <v-toolbar-title>
-                    <v-app-bar-nav-icon
+                    <v-app-bar-nav-icon class="contrast-primary-text"
                         @click="openSideBar()"
                         style="font-size:56px; font-weight: 300; padding-top:8px; margin-right:5px;"
                     >≡
@@ -37,7 +37,7 @@ fileName: App.vue
                 </v-btn>
             </v-app-bar>
 
-            <v-navigation-drawer app clipped flat v-model="sideBar">
+            <v-navigation-drawer app clipped flat v-model="sideBar" color="secondary">
                 <v-list>
                     <v-list-group
                         v-for="menu in menus"
@@ -46,7 +46,7 @@ fileName: App.vue
                     >
                         <template v-slot:activator>
                             <v-list-item-content>
-                                <v-list-item-title class="contrast-primary-text">\{{ menu.title }}</v-list-item-title>
+                                <v-list-item-title class="contrast-secondary-text">\{{ menu.title }}</v-list-item-title>
                             </v-list-item-content>
                         </template>
 
@@ -57,7 +57,7 @@ fileName: App.vue
                             @click="changeUrl()"
                         >
                             <v-list-item-content>
-                                <v-list-item-title class="contrast-primary-text">\{{ item.name }}</v-list-item-title>
+                                <v-list-item-title class="contrast-secondary-text">\{{ item.name }}</v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
                     </v-list-group>

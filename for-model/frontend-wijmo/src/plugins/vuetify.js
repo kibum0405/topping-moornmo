@@ -18,11 +18,13 @@ const themeColors = {
     success: '{{options.rootModel.uiStyle.palette.colors.success.colorCode}}',
 };
 
-const contrastText = readableColor(themeColors.primary);
 const style = document.createElement('style');
-
 style.type = 'text/css';
-style.innerHTML = `.contrast-primary-text { color: ${contrastText} !important; }`;
+
+Object.keys(themeColors).forEach(key => {
+    const contrastTextColor = readableColor(themeColors[key]);
+    style.innerHTML += `.contrast-${key}-text { color: ${contrastTextColor} !important; }\n`;
+});
 
 document.getElementsByTagName('head')[0].appendChild(style);
 
