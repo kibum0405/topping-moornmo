@@ -1,4 +1,4 @@
-fileName: BaseUI.vue
+fileName: BaseUIComponent.vue
 path: frontend-wijmo/src/components/base-ui
 ---
 <template>
@@ -10,7 +10,7 @@ path: frontend-wijmo/src/components/base-ui
     const axios = require('axios').default;
 
     export default{
-        name: 'baseUI',
+        name: 'BaseUIComponent',
         data: () => ({
             path: '/path',
             repository: null,
