@@ -9,15 +9,15 @@ path: frontend-wijmo/src/components/ui
             <div>&nbsp; {{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}</div>
         </div>
         <div class="gs-bundle-of-buttons" style="max-height:10vh;">
-            <v-btn @click="addNewRow" small color="primary" :disabled="!hasRole('{{contexts.actors.postActor.name}}')">
+            <v-btn @click="addNewRow" class="contrast-primary-text" small color="primary" :disabled="!hasRole('{{contexts.actors.postActor.name}}')">
                 <v-icon small>mdi-plus-circle-outline</v-icon>등록
             </v-btn>
-            <v-btn  @click="editSelectedRow" small color="primary" :disabled="!hasRole('{{contexts.actors.putActor.name}}')">
+            <v-btn  @click="editSelectedRow" class="contrast-primary-text" small color="primary" :disabled="!hasRole('{{contexts.actors.putActor.name}}')">
                 <v-icon small>mdi-pencil</v-icon>수정
             </v-btn>
             {{#commands}}
             {{^isRestRepository}}
-            <v-btn {{#if fieldDescriptors}}@click="{{nameCamelCase}}Dialog = true"{{else}}@click="{{nameCamelCase}}"{{/if}} small color="primary" {{#if (attachedActorName actorName)}}:disabled="!hasRole('{{actorName}}')"{{/if}}>
+            <v-btn {{#if fieldDescriptors}}@click="{{nameCamelCase}}Dialog = true"{{else}}@click="{{nameCamelCase}}"{{/if}} class="contrast-primary-text" small color="primary" {{#if (attachedActorName actorName)}}:disabled="!hasRole('{{actorName}}')"{{/if}}>
                 <v-icon small>mdi-minus-circle-outline</v-icon>{{#ifNotNull displayName name}}{{/ifNotNull}}
             </v-btn>
             {{#if fieldDescriptors}}
@@ -30,10 +30,10 @@ path: frontend-wijmo/src/components/ui
             {{/if}}
             {{/isRestRepository}}
             {{/commands}}
-            <v-btn @click="deleteSelectedRows" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
+            <v-btn @click="deleteSelectedRows" class="contrast-primary-text" small color="primary" :disabled="!hasRole('{{contexts.actors.deleteActor.name}}')">
                 <v-icon small>mdi-minus-circle-outline</v-icon>삭제
             </v-btn>
-            <excel-export-button :exportService="this.exportService" :getFlex="getFlex" />
+            <excel-export-button class="contrast-primary-text" :exportService="this.exportService" :getFlex="getFlex" />
         </div>
         {{#attached 'View' this}}
         <{{namePascalCase}} @search="search"></{{namePascalCase}}>

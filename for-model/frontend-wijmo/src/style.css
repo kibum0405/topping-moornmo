@@ -20,9 +20,6 @@
     bottom:10px;
 }
 
-
-
-
 .dialog-sub-title {
     font-size:15px;
     font-weight:700;
@@ -132,8 +129,8 @@
     background-color: {{options.rootModel.uiStyle.palette.colors.background.colorCode}} !important;
 }
 
-/* 오토 모델링으로 생성된 class를 이용한 color 색상 적용 */
-.surface-color {
+/* 오토 모델링으로 생성된 color들을 class를 이용해서 color 색상 적용 */
+/* .surface-color {
     color: {{options.rootModel.uiStyle.palette.colors.surface.colorCode}}
 }
 
@@ -159,4 +156,4 @@
 
 .secondary-darken-1-color {
     color: {{options.rootModel.uiStyle.palette.colors.secondary-darken-1.colorCode}}
-}
+} */

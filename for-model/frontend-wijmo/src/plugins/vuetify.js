@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
+import { readableColor } from 'polished';
 
 Vue.use(Vuetify);
 
@@ -16,6 +17,15 @@ const themeColors = {
     warning: '{{options.rootModel.uiStyle.palette.colors.warning.colorCode}}',
     success: '{{options.rootModel.uiStyle.palette.colors.success.colorCode}}',
 };
+
+const contrastText = readableColor(themeColors.primary);
+const style = document.createElement('style');
+
+style.type = 'text/css';
+style.innerHTML = `.contrast-primary-text { color: ${contrastText} !important; }`;
+
+document.getElementsByTagName('head')[0].appendChild(style);
+
 
 const defaultColors = {
     surface: '#FFFFFF', // 카드 배경색
