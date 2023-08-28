@@ -1,116 +1,47 @@
 forEach: UI
-fileName: {{namePascalCase}}Chart.vue
+fileName: {{namePascalCase}}Card.vue
 path: frontend-wijmo/src/components
-except: {{contexts.isNotChart}}
+except: {{contexts.isNotCard}}
 ---
 <template>
     <div>
-        <apexchart 
-                width="800" 
-                :type="type" 
-                :options="options"
-                :series="series"
-                ref="{{chart.type}}Chart"
-        ></apexchart>
+        <v-card v-for="(item, idx) in {{nameCamelCase}}"
+                :key="idx"
+        >
+            <v-card-title>
+                \{{ item.{{card.title}} }}
+            </v-card-title>
+            
+            {{#if (useSubtitle card)}}
+            <v-card-subtitle>
+                \{{ item.{{card.subtitle}} }}
+            </v-card-subtitle>
+            {{/if}}
+
+            <v-card-text>
+                \{{ item.{{card.text}} }}
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
 <script>
     import BaseUIComponent from './base-ui/BaseUIComponent';
-    import VueApexCharts from 'vue-apexcharts';
 
     export default {
         mixins: [BaseUIComponent],
-        name: '{{namePascalCase}}Chart',
-        components: {
-            'apexchart': VueApexCharts,
-        },
+        name: '{{namePascalCase}}Grid',
         data: () => ({
-            type: "{{chart.type}}",
-            options: {
-                chart: {
-                    id: "{{nameCamelCase}}-{{chart.type}}"
-                },
-                {{#if (isPieChart chart.type)}}
-                labels: [],
-                {{else}}
-                xaxis: {
-                    categories: []
-                },
-                {{/if}}
-            },
-            series: [
-                {
-                    data: []
-                }
-            ],
-            {{#options.view}}
             {{nameCamelCase}}: [],
-            {{/options.view}}
         }),
         async created() {
             {{#options.view}}
             var temp = await axios.get(axios.fixUrl('/{{namePlural}}'));
 
             temp.data._embedded.{{namePlural}}.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1]);
-
-            {{#if (isPieChart ../chart.type)}}
-            this.{{nameCamelCase}} = temp.data._embedded.{{namePlural}};
-            const labels = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
-            const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
-
-            this.options.labels = [];
-            this.series = [];
-
-            if(this.{{nameCamelCase}} && this.{{nameCamelCase}}.length > 0) {
-                this.{{nameCamelCase}}.forEach((item) => {
-                    if (item) {
-                        if (labels && labels.length > 0) {
-                            labels.forEach((label) => {
-                                if (item[label]) {
-                                    this.options.labels.push(item[label]);
-                                }
-                            })
-                        }
-                        if (data && data.length > 0) {
-                            data.forEach((val) => {
-                                if (item[val]) {
-                                    this.series.push(item[data]);
-                                }
-                            })
-                        }
-                    }
-                });
-            }
-            {{else}}
-            this.{{nameCamelCase}} = temp.data._embedded.{{namePlural}};
-            const categories = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
-            const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
-
-            if(this.{{nameCamelCase}} && this.{{nameCamelCase}}.length > 0) {
-                this.{{nameCamelCase}}.forEach((item) => {
-                    if (item) {
-                        if (categories && categories.length > 0) {
-                            categories.forEach((category) => {
-                                if (item[category]) {
-                                    this.options.xaxis.categories.push(item[category]);
-                                }
-                            })
-                        }
-                        if (data && data.length > 0) {
-                            data.forEach((val) => {
-                                if (item[val]) {
-                                    this.series[0].data.push(item[data]);
-                                }
-                            })
-                        }
-                    }
-                });
-            }
-            {{/if}}
+            
+            this.{{../nameCamelCase}} = temp.data._embedded.{{namePlural}};
             {{/options.view}}
-
-            this.$refs.{{chart.type}}Chart.refresh();
         },
         methods: {
         }
@@ -119,31 +50,17 @@ except: {{contexts.isNotChart}}
 
 
 <function>
-    this.contexts.isNotChart = this.uiType!="Chart"
+    this.contexts.isNotCard = this.uiType!="Card"
 
     let view = this.attached.find((ele) => ele._type.includes("View"));
     options.view = view;
 
-    window.$HandleBars.registerHelper('isPieChart', function (type) {
-        if (type.includes("pie")) {
+    window.$HandleBars.registerHelper('useSubtitle', function (card) {
+        if (card.subtitle && card.subtitle !== "") {
             return true;
         } else {
             return false;
         }
-    })
-
-    window.$HandleBars.registerHelper('setFieldMapping', function (fields) {
-        let text = "[ ";
-        if (fields && fields.length > 0) {
-            fields.forEach((field, index) => {
-                text += `"${field}"`;
-                if (index < fields.length-1) {
-                    text += ", "
-                }
-            })
-        }
-        text += " ]";
-        return text;
     })
 
     window.$HandleBars.registerHelper('toURL', function (className) {

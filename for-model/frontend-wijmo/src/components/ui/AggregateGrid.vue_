@@ -142,7 +142,7 @@ path: frontend-wijmo/src/components/ui
 
 <script>
 {{#attached 'View' this}}
-import {{namePascalCase}} from '../{{namePascalCase}}.vue';
+import {{namePascalCase}} from '../{{namePascalCase}}View.vue';
 {{/attached}}
 import {{namePascalCase}} from '../{{namePascalCase}}.vue'
 import BaseGrid from '../base-ui/BaseGrid'

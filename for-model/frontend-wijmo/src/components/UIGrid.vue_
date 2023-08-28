@@ -15,10 +15,10 @@ except: {{contexts.isNotGrid}}
 </template>
 
 <script>
-    import BaseUI from './base-ui/BaseUI';
+    import BaseUIComponent from './base-ui/BaseUIComponent';
 
     export default {
-        mixins: [BaseUI],
+        mixins: [BaseUIComponent],
         name: '{{namePascalCase}}Grid',
         data: () => ({
             headers: [
@@ -30,9 +30,6 @@ except: {{contexts.isNotGrid}}
             {{/grid.columns}}
             ],
             {{nameCamelCase}}: [],
-            {{#options.view}}
-            {{nameCamelCase}}: [],
-            {{/options.view}}
         }),
         async created() {
             {{#options.view}}
