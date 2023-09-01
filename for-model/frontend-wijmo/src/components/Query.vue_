@@ -36,7 +36,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
                 {{/if}}
                 {{/queryParameters}}
                 <v-col>
-                    <v-btn class="gs-query-search-btn"
+                    <v-btn class="gs-query-search-btn contrast-primary-text"
                         @click="search"
                         small
                         color="primary"
