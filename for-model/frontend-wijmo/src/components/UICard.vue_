@@ -5,7 +5,7 @@ except: {{contexts.isNotCard}}
 ---
 <template>
     <div>
-        <v-card v-for="(item, idx) in {{nameCamelCase}}"
+        <v-card v-for="(item, idx) in value"
                 :key="idx"
         >
             <v-card-title>
@@ -26,25 +26,21 @@ except: {{contexts.isNotCard}}
 </template>
 
 <script>
-    import BaseUIComponent from './base-ui/BaseUIComponent';
+    import BaseUICard from './base-ui/BaseUICard';
 
     export default {
-        mixins: [BaseUIComponent],
-        name: '{{namePascalCase}}Grid',
+        mixins: [BaseUICard],
+        {{#options.view}}
+        name: '{{namePascalCase}}-{{../namePascalCase}}',
+        {{/options.view}}
         data: () => ({
-            {{nameCamelCase}}: [],
         }),
-        async created() {
+        created() {
             {{#options.view}}
-            var temp = await axios.get(axios.fixUrl('/{{namePlural}}'));
-
-            temp.data._embedded.{{namePlural}}.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1]);
-            
-            this.{{../nameCamelCase}} = temp.data._embedded.{{namePlural}};
+            this.path = "/{{namePlural}}"
+            this.getValue();
             {{/options.view}}
         },
-        methods: {
-        }
     }
 </script>
 

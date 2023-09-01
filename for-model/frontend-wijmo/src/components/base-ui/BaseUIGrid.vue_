@@ -1,4 +1,4 @@
-fileName: BaseUIComponent.vue
+fileName: BaseUIGrid.vue
 path: frontend-wijmo/src/components/base-ui
 ---
 <template>
@@ -10,15 +10,19 @@ path: frontend-wijmo/src/components/base-ui
     const axios = require('axios').default;
 
     export default{
-        name: 'BaseUIComponent',
+        name: 'BaseUIGrid',
         data: () => ({
-            path: '/path',
+            path: "",
             repository: null,
+            value: [],
         }),
         created() {
             this.repository = new BaseRepository(axios, this.path)
         },
         methods: {
+            getValue() {
+                this.value = this.repository.find();
+            }
         },
     }
 </script>

@@ -7,7 +7,7 @@ except: {{contexts.isNotGrid}}
     <div>
         <v-data-table
                 :headers="headers"
-                :items="{{nameCamelCase}}"
+                :items="value"
                 :items-per-page="5"
                 class="elevation-1"
         ></v-data-table>
@@ -15,11 +15,13 @@ except: {{contexts.isNotGrid}}
 </template>
 
 <script>
-    import BaseUIComponent from './base-ui/BaseUIComponent';
+    import BaseUIGrid from './base-ui/BaseUIGrid';
 
     export default {
-        mixins: [BaseUIComponent],
-        name: '{{namePascalCase}}Grid',
+        mixins: [BaseUIGrid],
+        {{#options.view}}
+        name: '{{namePascalCase}}-{{../namePascalCase}}',
+        {{/options.view}}
         data: () => ({
             headers: [
             {{#grid.columns}}
@@ -29,20 +31,13 @@ except: {{contexts.isNotGrid}}
                 },
             {{/grid.columns}}
             ],
-            {{nameCamelCase}}: [],
         }),
-        async created() {
+        created() {
             {{#options.view}}
-            var temp = await axios.get(axios.fixUrl('/{{namePlural}}'));
-
-            temp.data._embedded.{{namePlural}}.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1]);
-            
-            this.{{../nameCamelCase}} = temp.data._embedded.{{namePlural}};
+            this.path = "/{{namePlural}}"
+            this.getValue();
             {{/options.view}}
-
         },
-        methods: {
-        }
     }
 </script>
 

@@ -44,71 +44,26 @@ except: {{contexts.isNotChart}}
                     data: []
                 }
             ],
-            {{#options.view}}
-            {{nameCamelCase}}: [],
-            {{/options.view}}
         }),
-        async created() {
+        created() {
             {{#options.view}}
-            var temp = await axios.get(axios.fixUrl('/{{namePlural}}'));
-
-            temp.data._embedded.{{namePlural}}.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1]);
-
+            this.path = "/{{namePlural}}"
+            this.getValue();
             {{#if (isPieChart ../chart.type)}}
             this.{{nameCamelCase}} = temp.data._embedded.{{namePlural}};
-            const labels = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
-            const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
-
+            this.labels = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
+            this.data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
             this.options.labels = [];
             this.series = [];
-
-            if(this.{{nameCamelCase}} && this.{{nameCamelCase}}.length > 0) {
-                this.{{nameCamelCase}}.forEach((item) => {
-                    if (item) {
-                        if (labels && labels.length > 0) {
-                            labels.forEach((label) => {
-                                if (item[label]) {
-                                    this.options.labels.push(item[label]);
-                                }
-                            })
-                        }
-                        if (data && data.length > 0) {
-                            data.forEach((val) => {
-                                if (item[val]) {
-                                    this.series.push(item[data]);
-                                }
-                            })
-                        }
-                    }
-                });
-            }
             {{else}}
             this.{{nameCamelCase}} = temp.data._embedded.{{namePlural}};
-            const categories = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
-            const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
-
-            if(this.{{nameCamelCase}} && this.{{nameCamelCase}}.length > 0) {
-                this.{{nameCamelCase}}.forEach((item) => {
-                    if (item) {
-                        if (categories && categories.length > 0) {
-                            categories.forEach((category) => {
-                                if (item[category]) {
-                                    this.options.xaxis.categories.push(item[category]);
-                                }
-                            })
-                        }
-                        if (data && data.length > 0) {
-                            data.forEach((val) => {
-                                if (item[val]) {
-                                    this.series[0].data.push(item[data]);
-                                }
-                            })
-                        }
-                    }
-                });
-            }
+            this.categories = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
+            this.data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
             {{/if}}
             {{/options.view}}
+
+            const type = "{{chart.type}}"
+            this.setValue(type);
 
             this.$refs.{{chart.type}}Chart.refresh();
         },
