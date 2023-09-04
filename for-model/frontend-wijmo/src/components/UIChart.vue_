@@ -33,7 +33,7 @@ except: {{contexts.isNotChart}}
             const path = "/{{namePlural}}"
             await this.getValue(path);
 
-            const type = "{{chart.type}}";
+            const type = "{{../chart.type}}";
             {{#if (isPieChart ../chart.type)}}
             const labels = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
             const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
