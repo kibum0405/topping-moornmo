@@ -31,7 +31,7 @@ path: frontend-wijmo/src/components
         {{/aggregateRoot.fieldDescriptors}}
         {{#aggregateRoot.fieldDescriptors}}
         {{#if isList}}
-        <{{namePascalCase}}DetailGrid label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" offline v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
+        <{{getEntityFromList className}}DetailGrid label="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" offline v-model="value.{{nameCamelCase}}" :editMode="editMode" @change="change"/>
         {{/if}}
         {{/aggregateRoot.fieldDescriptors}}
 
@@ -72,6 +72,12 @@ export default {
 
 
 <function>
+    window.$HandleBars.registerHelper('getEntityFromList', function (className) {
+        if(className.includes("List<") && className.includes(">")) {
+            return className.replace("List<", "").replace(">", "");
+        }
+        return className;
+    })
     window.$HandleBars.registerHelper('ifNotNull', function (displayName, name) {
         if(displayName){
 	        return displayName;
