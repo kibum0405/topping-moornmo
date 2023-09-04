@@ -27,7 +27,7 @@ path: frontend-wijmo/src/components/base-ui
         methods: {
             getValue() {
                 this.value = this.repository.find();
-            }
+            },
             setValue(chartType) {
                 if (chartType === "pie") {
                     if(this.value && this.value.length > 0) {
