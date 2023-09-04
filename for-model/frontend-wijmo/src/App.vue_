@@ -4,7 +4,7 @@ fileName: App.vue
     <v-app id="inspire">
         <div>
             <Snackbar/>
-            <v-app-bar app clipped-left flat class="contrast-primary-text">
+            <v-app-bar app clipped-left flat color="primary">
                 <v-toolbar-title>
                     <v-app-bar-nav-icon class="contrast-primary-text"
                         @click="openSideBar()"
