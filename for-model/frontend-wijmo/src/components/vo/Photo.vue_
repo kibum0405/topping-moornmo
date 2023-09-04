@@ -25,6 +25,8 @@ path: frontend-wijmo/src/components/vo
 </template>
 
 <script>
+    import Vue from "vue";
+
     export default {
         name:"Photo",
         props: {
@@ -52,6 +54,7 @@ path: frontend-wijmo/src/components/vo
                 }
 
                 var me = this
+                me.value = {}
                 var input = document.createElement("input");
                 input.type = "file";
                 input.accept = "image/*";
@@ -64,8 +67,7 @@ path: frontend-wijmo/src/components/vo
 
                     reader.onload = function () {
                         var result = reader.result;
-                        me.value.imgFile = result;
-                        
+                        Vue.set(me.value, 'imgFile', result);
                     };
                     reader.readAsDataURL( file );
                 };
