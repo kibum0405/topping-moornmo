@@ -38,7 +38,7 @@ path: frontend-wijmo/src/components/ui
             {{else}}
             <wj-flex-grid-column binding="{{nameCamelCase}}.name" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center">
                 <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">
-                    <{{namePascalCase}} :editMode="editMode" v-model="cell.item.{{nameCamelCase}}"></{{namePascalCase}}>
+                    <{{namePascalCase}} v-model="cell.item.{{nameCamelCase}}" :editMode="editMode"></{{namePascalCase}}>
                 </wj-flex-grid-cell-template>
             </wj-flex-grid-column>
             {{/if}}
