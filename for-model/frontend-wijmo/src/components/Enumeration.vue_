@@ -10,7 +10,7 @@ path: frontend-wijmo/src/components
                 <v-select
                     v-model="newValue"
                     :label="label"
-                    :items="salestypeList"
+                    :items="selections"
                     solo
                 ></v-select>
             </div>
@@ -32,7 +32,7 @@ export default {
         label: String
     },
     data: () => ({
-        {{camelCase name}}List : [{{#items}} "{{value}}", {{/items}}],
+        selections : [{{#items}}"{{value}}",{{/items}}],
         newValue: '',
     }),
     async created() {
