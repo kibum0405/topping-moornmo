@@ -32,10 +32,10 @@ except: {{contexts.isNotGrid}}
             {{/grid.columns}}
             ],
         }),
-        created() {
+        async created() {
             {{#options.view}}
-            this.path = "/{{namePlural}}"
-            this.getValue();
+            const path = "{{namePlural}}"
+            await this.getValue(path);
             {{/options.view}}
         },
     }
