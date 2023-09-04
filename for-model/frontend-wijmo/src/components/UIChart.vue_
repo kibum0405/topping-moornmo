@@ -30,7 +30,7 @@ except: {{contexts.isNotChart}}
         }),
         async created() {
             {{#options.view}}
-            const path = "/{{namePlural}}"
+            const path = "{{namePlural}}"
             await this.getValue(path);
 
             const type = "{{../chart.type}}";

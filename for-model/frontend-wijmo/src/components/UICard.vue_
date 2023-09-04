@@ -35,9 +35,9 @@ except: {{contexts.isNotCard}}
         {{/options.view}}
         data: () => ({
         }),
-        created() {
+        async created() {
             {{#options.view}}
-            const path = "/{{namePlural}}"
+            const path = "{{namePlural}}"
             await this.getValue(path);
             {{/options.view}}
         },
