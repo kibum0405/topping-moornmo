@@ -148,7 +148,7 @@ except: {{#ifEquals dataProjection "query-for-aggregate"}}false{{else}}true{{/if
     window.$HandleBars.registerHelper('getPrimitiveType', function (className) {
         if(className.includes("String")) {
             return "String";
-        } else if(className.includes("Integer") || className.includes("Long") || className.includes("Double") || className.includes("Float")) || className.includes("int")) {
+        } else if(className.includes("Integer") || className.includes("Long") || className.includes("Double") || className.includes("Float") || className.includes("int")) {
             return "Number";
         } else if(className.includes("Boolean")) {
             return "Boolean";
