@@ -37,8 +37,8 @@ except: {{contexts.isNotCard}}
         }),
         created() {
             {{#options.view}}
-            this.path = "/{{namePlural}}"
-            this.getValue();
+            const path = "/{{namePlural}}"
+            await this.getValue(path);
             {{/options.view}}
         },
     }

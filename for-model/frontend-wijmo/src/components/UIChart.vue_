@@ -16,54 +16,34 @@ except: {{contexts.isNotChart}}
 </template>
 
 <script>
-    import BaseUIComponent from './base-ui/BaseUIComponent';
+    import BaseUIChart from './base-ui/BaseUIChart';
     import VueApexCharts from 'vue-apexcharts';
 
     export default {
-        mixins: [BaseUIComponent],
+        mixins: [BaseUIChart],
         name: '{{namePascalCase}}Chart',
         components: {
             'apexchart': VueApexCharts,
         },
         data: () => ({
             type: "{{chart.type}}",
-            options: {
-                chart: {
-                    id: "{{nameCamelCase}}-{{chart.type}}"
-                },
-                {{#if (isPieChart chart.type)}}
-                labels: [],
-                {{else}}
-                xaxis: {
-                    categories: []
-                },
-                {{/if}}
-            },
-            series: [
-                {
-                    data: []
-                }
-            ],
         }),
-        created() {
+        async created() {
             {{#options.view}}
-            this.path = "/{{namePlural}}"
-            this.getValue();
+            const path = "/{{namePlural}}"
+            await this.getValue(path);
+
+            const type = "{{chart.type}}";
             {{#if (isPieChart ../chart.type)}}
-            this.{{nameCamelCase}} = temp.data._embedded.{{namePlural}};
-            this.labels = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
-            this.data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
-            this.options.labels = [];
-            this.series = [];
+            const labels = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
+            const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
+            await this.setValue(type, labels, data);
             {{else}}
-            this.{{nameCamelCase}} = temp.data._embedded.{{namePlural}};
-            this.categories = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
-            this.data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
+            const categories = {{#setFieldMapping ../chart.fieldMapping.category}}{{/setFieldMapping}};
+            const data = {{#setFieldMapping ../chart.fieldMapping.data}}{{/setFieldMapping}};
+            await this.setValue(type, categories, data);
             {{/if}}
             {{/options.view}}
-
-            const type = "{{chart.type}}"
-            this.setValue(type);
 
             this.$refs.{{chart.type}}Chart.refresh();
         },
