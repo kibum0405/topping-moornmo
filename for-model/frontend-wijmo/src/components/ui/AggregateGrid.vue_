@@ -63,11 +63,13 @@ path: frontend-wijmo/src/components/ui
             {{#aggregateRoot.fieldDescriptors}}
             {{#if (isNotId nameCamelCase)}}
             {{#if isVO}}
+            {{#checkVO className}}
             <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center">
                 <wj-flex-grid-cell-template cellType="Cell" v-slot="cell">   
                     <{{className}} v-model="cell.item.{{nameCamelCase}}" :editMode="editMode"></{{className}}>
                 </wj-flex-grid-cell-template>
             </wj-flex-grid-column>
+            {{/checkVO}}
             {{else}}
             <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center" />
             {{/if}}
@@ -146,20 +148,12 @@ path: frontend-wijmo/src/components/ui
 </template>
 
 <script>
-{{#attached 'View' this}}
-import {{namePascalCase}} from '../{{namePascalCase}}View.vue';
-{{/attached}}
-import {{namePascalCase}} from '../{{namePascalCase}}.vue'
 import BaseGrid from '../base-ui/BaseGrid'
 
 export default {
     name: '{{nameCamelCase}}Grid',
     mixins:[BaseGrid],
     components:{
-    {{#attached 'View' this}}
-        {{namePascalCase}},
-    {{/attached}}
-        {{namePascalCase}},
     },
     data: () => ({
         path: '{{namePlural}}',
@@ -235,6 +229,12 @@ if (me && me.attached) {
         }
     }
 }
+window.$HandleBars.registerHelper('checkVO', function (className, options) {
+    if(className.endsWith("Address") || className.endsWith("Photo") || className.endsWith("User") || className.endsWith("Email") 
+            || className.endsWith("Payment") || className.endsWith("Money") || className.endsWith("Weather") || className.endsWith("Rating") ){
+        return options.fn(this);
+    }
+})
 window.$HandleBars.registerHelper('getEntityFromList', function (className) {
     if(className.includes("List<") && className.includes(">")) {
         return className.replace("List<", "").replace(">", "");
