@@ -55,6 +55,7 @@ fileName: App.vue
                             :key="item.key"
                             :to="item.url"
                             @click="changeUrl()"
+                            style="margin-left: -40px;"
                         >
                             <v-list-item-content>
                                 <v-list-item-title>\{{ item.name }}</v-list-item-title>
