@@ -53,22 +53,13 @@ path: frontend-wijmo/src/components
 
 
 <script>
-{{#aggregateRoot.fieldDescriptors}}
-{{#checkVO className}}
-import {{className}} from './vo/{{className}}.vue';
-{{/checkVO}}
-{{/aggregateRoot.fieldDescriptors}}
+
 import BaseEntity from './base-ui/BaseEntity'
 
 export default {
     name: '{{namePascalCase}}',
     mixins:[BaseEntity],
     components:{
-        {{#aggregateRoot.fieldDescriptors}}
-        {{#checkVO className}}
-        {{className}},
-        {{/checkVO}}
-        {{/aggregateRoot.fieldDescriptors}}
     },
     
     data: () => ({
