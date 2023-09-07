@@ -61,6 +61,7 @@ path: frontend-wijmo/src/components/ui
             <wj-flex-grid-filter :filterColumns="['RowHeader',{{#aggregateRoot.fieldDescriptors}}{{#if (isNotId nameCamelCase)}}'{{nameCamelCase}}',{{/if}}{{/aggregateRoot.fieldDescriptors}}]" />
             <wj-flex-grid-cell-template cellType="RowHeader" v-slot="cell">\{{cell.row.index + 1}}</wj-flex-grid-cell-template>
             {{#aggregateRoot.fieldDescriptors}}
+            {{#unless isKey}}
             {{#if (isNotId nameCamelCase)}}
             {{#if isVO}}
             {{#checkVO className}}
@@ -74,6 +75,7 @@ path: frontend-wijmo/src/components/ui
             <wj-flex-grid-column binding="{{nameCamelCase}}" header="{{#ifNotNull displayName namePascalCase}}{{/ifNotNull}}" width="2*" :isReadOnly="true" align="center" />
             {{/if}}
             {{/if}}
+            {{/unless}}
             {{/aggregateRoot.fieldDescriptors}}
             {{#outgoingRelations}}
             {{#target}}
