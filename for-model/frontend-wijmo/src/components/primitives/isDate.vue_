@@ -4,6 +4,7 @@ path: frontend-wijmo/src/components/primitives
 <template>
     <div>
         <div v-if="editMode">
+            <div class="label-title">\{{label}}</div>
             <v-menu
                 ref="menu"
                 v-model="menu"
@@ -17,7 +18,6 @@ path: frontend-wijmo/src/components/primitives
                     <v-text-field
                         v-bind="attrs"
                         v-model="date"
-                        :label="label"
                         prepend-icon="mdi-calendar"
                         readonly
                         v-on="on"
@@ -52,6 +52,7 @@ path: frontend-wijmo/src/components/primitives
         props: {
             value: Object,
             editMode: Boolean,
+            label: String,
         },
         data: () => ({
             menu: false,
