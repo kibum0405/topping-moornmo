@@ -7,13 +7,13 @@ path: frontend-wijmo/src/components/primitives
     <div>
         <div v-if="editMode">
             <div class="label-title">\{{label}}</div>
-            <v-text-field 
+            <v-textarea
                 v-bind="$attrs"
                 v-model="value"
-                @change="change"
+                @input="change" 
                 label="입력하세요."
-                outlined
-                single-line
+                rows="1"
+                solo
             />
         </div>
         <div v-else>
