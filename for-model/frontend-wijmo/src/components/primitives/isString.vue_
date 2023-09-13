@@ -12,6 +12,7 @@ path: frontend-wijmo/src/components/primitives
                 v-model="value"
                 @input="change" 
                 label="입력하세요."
+                auto-grow
                 rows="1"
                 solo
             />
