@@ -190,31 +190,8 @@ path: frontend-wijmo/src/components
     {{/if}}{{/each}}
     {{/referenceClass}}
 
-    {{#fieldDescriptors}}
-    {{#if (isNotId nameCamelCase)}}
-    {{#if (isPrimitive className)}}
-    {{else}}
-    {{#checkVO className}}
-    import {{className}} from './vo/{{className}}.vue';
-    {{/checkVO}}
-    {{/if}}
-    {{/if}}
-    {{/fieldDescriptors}}
-
     export default {
         name: '{{namePascalCase}}',
-        components:{
-        {{#fieldDescriptors}}
-            {{#if (isNotId nameCamelCase)}}
-            {{#if (isPrimitive className)}}
-            {{else}}
-            {{#checkVO className}}
-            {{className}},
-            {{/checkVO}}
-            {{/if}}
-            {{/if}}
-        {{/fieldDescriptors}}
-        },
         props: {
             value: [Object, String, Number, Boolean, Array],
             editMode: Boolean,
@@ -484,6 +461,8 @@ path: frontend-wijmo/src/components
         if(className.endsWith("Address") || className.endsWith("Photo") || className.endsWith("User") || className.endsWith("Email") 
                 || className.endsWith("Payment") || className.endsWith("Money") || className.endsWith("Weather") || className.endsWith("Rating") ){
             return options.fn(this);
+        } else {
+            return options.inverse(this);
         }
     })
 
