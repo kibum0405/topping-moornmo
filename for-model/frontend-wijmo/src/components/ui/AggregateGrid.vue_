@@ -193,6 +193,13 @@ export default {
             }catch(e){
                 this.$EventBus.$emit('show-error', e);
             }
+            {{#commands}}
+            {{^isRestRepository}}
+            {{#if fieldDescriptors}}
+            this.{{nameCamelCase}}Dialog = false
+            {{/if}}
+            {{/isRestRepository}}
+            {{/commands}}
         },
         {{/isRestRepository}}
         {{/commands}}
